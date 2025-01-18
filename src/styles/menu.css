@@ -1,0 +1,149 @@
+:root {
+  --menu-back-clr: var(--blue);
+  --menu-font-clr: var(--white);
+  --menu-font-size: 1.25rem;
+  --menu-height: 4rem;
+  --menu-padding-inline: 2rem;
+}
+
+#menu {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  height: var(--menu-height);
+  padding-block: 1rem;
+  padding-inline: var(--menu-padding-inline);
+  align-items: center;
+  background-color: var(--menu-back-clr);
+  color: var(--menu-font-clr);
+  font-family: var(--font-head);
+  font-size: var(--menu-font-size);
+
+  justify-content: space-between;
+}
+
+/* NAVIGATION */
+.ctnr-menu-items ul {
+  display: flex;
+  gap: 1rem;
+  font-weight: lighter;
+  list-style: none;
+}
+
+.ctnr-menu-items li:hover {
+  font-weight: bold;
+}
+
+.ctnr-menu-items a::before {
+  display: block;
+  content: attr(title);
+  font-weight: bold;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+/* PROFILE */
+.profile {
+  border-radius: 50%;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  background-color: aliceblue;
+}
+
+.profile.logged-in {
+  border: 3px solid var(--pink);
+}
+
+.inline-profile {
+  display: none;
+}
+
+/* PROGRESS BAR */
+.ctnr-progress-bar {
+  flex: 1;
+  text-align: center;
+}
+
+.ctnr-progress-bar .progress-text {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 300;
+  font-family: Roboto;
+  margin-top: 2px;
+}
+
+progress {
+  width: min(25rem, 100%);
+  height: 1rem;
+  margin: auto;
+  background-color: var(--white);
+  border: none;
+  border-radius: 20px;
+}
+
+progress::-moz-progress-bar,
+progress::-webkit-progress-bar {
+  background: var(--orange);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.75rem;
+  color: var(--menu-font-clr);
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  /* Hide the menu and progress text */
+  .ctnr-menu-items {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block; /* Show toggle button */
+  }
+
+  .ctnr-progress-bar .progress-text {
+    display: none; /* Hide progress text */
+  }
+
+  .ctnr-menu-items.show {
+    display: block;
+    position: absolute;
+    top: var(--menu-height);
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding-inline: var(--menu-padding-inline);
+    background-color: var(--menu-back-clr);
+  }
+
+  .ctnr-menu-items ul {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .ctnr-menu-items ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .ctnr-menu-items ul li:last-child {
+    margin-bottom: 0;
+  }
+
+  .ctnr-profile {
+    display: none;
+  }
+
+  .inline-profile {
+    display: block;
+  }
+
+  .ctnr-profile.inline {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}

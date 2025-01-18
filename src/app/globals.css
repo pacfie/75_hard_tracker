@@ -1,7 +1,34 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --blue-base: 14, 121, 178;
+  --blue: rgba(var(--blue-base), 1);
+  --white-base: 255, 255, 255;
+  --white: rgba(var(--white-base), 1);
+  --orange-base: 243, 146, 55;
+  --orange: rgba(var(--orange-base), 1);
+  --pink-base: 191, 19, 99;
+  --pink: rgba(var(--pink-base), 1);
+  --black-base: 25, 25, 35;
+  --black: rgba(var(--black-base), 1);
+
+  --font-head: Outfit;
+  --font-text: Roboto;
+  
 }
+
+@font-face {
+  font-family: Outfit;
+  src: url(../fonts/Outfit/Outfit-VariableFont_wght.ttf);
+}
+
+
+@font-face {
+  font-family: Roboto;
+  src: url(../fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf);
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
