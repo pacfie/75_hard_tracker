@@ -1,0 +1,46 @@
+:root {
+  --box-color: var(--blue);
+}
+
+#rules-box {
+  --icon-cntr-width: 4rem;
+  padding: 2rem;
+  border: 3px solid var(--box-color);
+  border-radius: 10px;
+}
+
+#rules-box h1,
+#rules-box h3 {
+  font-family: Outfit;
+}
+
+#rules-box p {
+  /* padding-left: calc(var(--icon-cntr-width) + 1rem); */
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 300;
+}
+
+#rules-box .icon-container {
+  place-content: center;
+  display: grid;
+  width: var(--icon-cntr-width);
+  min-width: var(--icon-cntr-width);
+  aspect-ratio: 1;
+  padding: 5px;
+  border-radius: 50%;
+  background-color: var(--pink);
+  color: var(--white);
+}
+
+#rules-box svg.big {
+  width: 2rem;
+}
+
+#rules-box svg.medium {
+  width: 1.75rem;
+}
+
+#rules-box svg.small {
+  width: 1.5rem;
+}

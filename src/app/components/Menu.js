@@ -27,22 +27,38 @@ export function Menu({ content }) {
         <nav className={`ctnr-menu-items ${menuOpen ? "show" : "hide"}`}>
           <ul>
             <li>
-              <Link title="Challenge" href="/challenge" onClick={() => setMenuOpen(false)}>
+              <Link
+                title="Challenge"
+                href="/challenge"
+                onClick={() => setMenuOpen(false)}
+              >
                 <span>Challenge</span>
               </Link>
             </li>
             <li>
-              <Link title="Rules" href="/rules" onClick={() => setMenuOpen(false)}>
+              <Link
+                title="Rules"
+                href="/rules"
+                onClick={() => setMenuOpen(false)}
+              >
                 <span>Rules</span>
               </Link>
             </li>
             <li>
-              <Link title="Statistics" href="/statistics" onClick={() => setMenuOpen(false)}>
+              <Link
+                title="Statistics"
+                href="/statistics"
+                onClick={() => setMenuOpen(false)}
+              >
                 <span>Statistics</span>
               </Link>
             </li>
             <li className="inline-profile">
-              <Link title="Profile" href="/profile" onClick={() => setMenuOpen(false)}>
+              <Link
+                title="Profile"
+                href="/profile"
+                onClick={() => setMenuOpen(false)}
+              >
                 <div className="ctnr-profile inline">
                   <div className="profile"></div>
                   <span>Profile</span>
@@ -55,7 +71,9 @@ export function Menu({ content }) {
           <div className="profile"></div>
         </div>
       </div>
-      <div>{content}</div>
+      <div className="py-5 px-2">
+        {content}
+        </div>
     </>
   );
 }

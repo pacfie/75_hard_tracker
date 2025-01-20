@@ -8,6 +8,7 @@
 
 #menu {
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
   width: 100%;
   height: var(--menu-height);
@@ -18,8 +19,6 @@
   color: var(--menu-font-clr);
   font-family: var(--font-head);
   font-size: var(--menu-font-size);
-
-  justify-content: space-between;
 }
 
 /* NAVIGATION */
@@ -95,6 +94,7 @@ progress::-webkit-progress-bar {
   color: var(--menu-font-clr);
   cursor: pointer;
 }
+
 @media (max-width: 768px) {
   /* Hide the menu and progress text */
   .ctnr-menu-items {
