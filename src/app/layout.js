@@ -1,8 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import { Menu } from "./components/Menu";
+import "./globals.css";
 import "@/styles/menu.css";
 import "@/styles/rules.css";
+import "@/styles/banner.css";
+import "@/styles/checkboxes.css";
+import "@/styles/daily.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "@/app/icons.js";
 

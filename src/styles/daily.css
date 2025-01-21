@@ -1,0 +1,44 @@
+:root {
+  --complete-btn-font-clr: var(--orange);
+  --complete-btn-bg-clr: var(--white);
+}
+
+#daily-data {
+  display: grid;
+  height: fit-content;
+  /* padding: 1.5rem; */
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+#daily-data svg {
+  width: 2rem;
+}
+
+.daily-todo-header {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 1rem;
+    background-color: rgba(var(--blue-base), 0.2);
+    font-family: Outfit;
+    font-size: 1.5rem;
+}
+
+.complete-btn-cntr button {
+  padding-block: 0.5rem;
+  padding-inline: 1.5rem;
+  border: 1px solid var(--complete-btn-font-clr);
+  border-radius: 20px;
+  background-color: transparent;
+  color: var(--complete-btn-font-clr);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 300;
+  font-family: Outfit;
+}
+
+.complete-btn-cntr button:hover {
+  background-color: var(--complete-btn-font-clr);
+  color: var(--complete-btn-bg-clr);
+}

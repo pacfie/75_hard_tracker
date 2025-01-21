@@ -1,5 +1,5 @@
 :root {
-  --menu-back-clr: var(--blue);
+  --menu-bg-clr: var(--blue);
   --menu-font-clr: var(--white);
   --menu-font-size: 1.25rem;
   --menu-height: 4rem;
@@ -15,7 +15,7 @@
   padding-block: 1rem;
   padding-inline: var(--menu-padding-inline);
   align-items: center;
-  background-color: var(--menu-back-clr);
+  background-color: var(--menu-bg-clr);
   color: var(--menu-font-clr);
   font-family: var(--font-head);
   font-size: var(--menu-font-size);
@@ -69,7 +69,6 @@
   font-size: 0.8rem;
   font-weight: 300;
   font-family: Roboto;
-  margin-top: 2px;
 }
 
 progress {
@@ -117,7 +116,7 @@ progress::-webkit-progress-bar {
     right: 0;
     z-index: 1000;
     padding-inline: var(--menu-padding-inline);
-    background-color: var(--menu-back-clr);
+    background-color: var(--menu-bg-clr);
   }
 
   .ctnr-menu-items ul {

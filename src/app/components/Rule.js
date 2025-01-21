@@ -8,7 +8,7 @@ export default function Rule({ ruleHeader, ruleText, ruleIcon, size = "big" }) {
       </div>
       <div>
         <h3>{ruleHeader}</h3>
-        <p>{ruleText}</p>
+        <p className="text-muted">{ruleText}</p>
       </div>
     </div>
   );

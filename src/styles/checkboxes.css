@@ -1,0 +1,48 @@
+:root {
+  --checkbox-width-small: 1.5rem;
+  --checkbox-width-big: 2.5rem;
+  --checkbox-checked-bg-clr: var(--pink);
+}
+
+#checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
+  width: fit-content;
+  padding: 1.5rem;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.custom-checkbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-checkbox label {
+  font-size: 0.8rem;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.custom-checkbox .form-check-input {
+  margin: 0;
+  border: 1px solid var(--black);
+  cursor: pointer;
+}
+
+.custom-checkbox .form-check-input.small {
+  width: var(--checkbox-width-small);
+  height: var(--checkbox-width-small);
+}
+
+.custom-checkbox .form-check-input.big {
+  width: var(--checkbox-width-big);
+  height: var(--checkbox-width-big);
+}
+
+.custom-checkbox .form-check-input:checked {
+  background-color: var(--checkbox-checked-bg-clr);
+  border-color: var(--checkbox-checked-bg-clr);
+}
