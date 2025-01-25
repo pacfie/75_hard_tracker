@@ -71,7 +71,7 @@ export function Menu({ content }) {
           <div className="profile"></div>
         </div>
       </div>
-      <div className="py-5 px-2">
+      <div className="py-3 py-md-5 px-3">
         {content}
         </div>
     </>

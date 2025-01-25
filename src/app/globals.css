@@ -1,23 +1,26 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-
-  --blue-base: 14, 121, 178;
-  --blue: rgba(var(--blue-base), 1);
   --white-base: 255, 255, 255;
   --white: rgba(var(--white-base), 1);
-  --orange-base: 243, 146, 55;
-  --orange: rgba(var(--orange-base), 1);
-  --pink-base: 191, 19, 99;
-  --pink: rgba(var(--pink-base), 1);
-  --black-base: 25, 25, 35;
-  --black: rgba(var(--black-base), 1);
+  --dark-base: 45, 43, 45;
+  --black: rgba(var(--dark-base), 1);
+  /* Color #1 - green */
+  --green-base: 32, 163, 158;
+  --blue: rgba(var(--green-base), 1);
+  /* Color #2 - red */
+  --red-base: 255, 75, 62;
+  --pink: rgba(var(--red-base), 1);
+  /* Color #3 - yellow */
+  --yellow-base: 255, 178, 15;
+  --orange: rgba(var(--yellow-base), 1);
 
+  --border-radius: 10px;
   --box-shadow: 1px 1px 6px -2px #999797;
 
   --font-head: Outfit;
   --font-text: Roboto;
-  
+
+  --background: rgba(var(--green-base), 0.05);
+  --foreground: #171717;
 }
 
 @font-face {
@@ -25,12 +28,10 @@
   src: url(../fonts/Outfit/Outfit-VariableFont_wght.ttf);
 }
 
-
 @font-face {
   font-family: Roboto;
   src: url(../fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf);
 }
-
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -47,7 +48,7 @@ body {
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background-color: var(--background) !important;
   font-family: var(--font-text), sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

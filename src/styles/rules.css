@@ -1,12 +1,14 @@
 :root {
   --box-color: var(--blue);
+  --rules-icon-bg-color: var(--orange);
 }
 
 #rules-box {
   --icon-cntr-width: 4rem;
   padding: 2rem;
   border: 3px solid var(--box-color);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
+  background-color: var(--white);
 }
 
 #rules-box h1,
@@ -29,7 +31,7 @@
   aspect-ratio: 1;
   padding: 5px;
   border-radius: 50%;
-  background-color: var(--pink);
+  background-color: var(--rules-icon-bg-color);
   color: var(--white);
 }
 

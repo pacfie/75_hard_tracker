@@ -10,11 +10,10 @@
   justify-content: space-around;
   align-items: center;
   padding: 0.5rem;
-  border: var(--banner-border-width) solid var(--banner-font-clr);
-  border-radius: 10px;
-  background-color: var(--banner-bg-clr);
-  color: var(--banner-font-clr);
-  grid-column: 1 / span 2;
+  border-radius: var(--border-radius);
+  background-color: var(--banner-counter-bg-clr);
+  color: var(--banner-bg-clr);  
+  box-shadow: var(--box-shadow);
 }
 
 .banner-date {
@@ -24,18 +23,8 @@
 }
 
 .banner-counter {
-  display: grid;
-  place-content: center;
-  gap: 0.5rem;
-  position: absolute;
-  width: 7rem;
-  aspect-ratio: 1;
   padding: 0.5rem;
-  border: var(--banner-border-width) solid var(--banner-font-clr);
-  border-radius: 50%;
-  background-color: var(--banner-counter-bg-clr);
   text-align: center;
-  color: var(--banner-bg-clr);
 }
 
 .banner-counter .remaining-days {
@@ -44,4 +33,24 @@
   font-family: Outfit;
   font-weight: 600;
   line-height: 1;
+}
+
+@media (min-width: 769px) {
+  #banner {
+    /* border: var(--banner-border-width) solid var(--banner-font-clr); */
+    background-color: var(--banner-bg-clr);
+    color: var(--banner-font-clr);
+  }
+  .banner-counter {
+    display: grid;
+    place-content: center;
+    gap: 0.5rem;
+    position: absolute;
+    width: 7rem;
+    aspect-ratio: 1;
+    /* border: var(--banner-border-width) solid var(--banner-font-clr); */
+    border-radius: 50%;
+    background-color: var(--banner-counter-bg-clr);
+    color: var(--banner-bg-clr);
+  }
 }

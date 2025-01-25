@@ -6,24 +6,28 @@
 
 #checkbox-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
   gap: 1rem;
-  width: fit-content;
+  /* width: 100%; */
+  height: fit-content;
   padding: 1.5rem;
-  border: 1px solid;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  background-color: var(--white);
 }
 
 .custom-checkbox {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50px;
 }
 
 .custom-checkbox label {
   font-size: 0.8rem;
   font-weight: 300;
   font-style: italic;
+  white-space: nowrap;
 }
 
 .custom-checkbox .form-check-input {

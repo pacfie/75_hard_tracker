@@ -1,4 +1,5 @@
 import Rule from "@/app/components/Rule";
+import { faCarrot, faBook, faDumbbell, faGlassWater, faCameraRetro } from "@fortawesome/free-solid-svg-icons";
 
 export default function Rules() {
   return (
@@ -10,23 +11,23 @@ export default function Rules() {
           ruleText={
             "Can be any kind of diet but no cheats and no alcohol is allowed."
           }
-          ruleIcon={["fas", "carrot"]}
+          ruleIcon={faCarrot}
         ></Rule>
         <Rule
           ruleHeader={"2 x 45min workouts"}
           ruleText={"One workout must be outside."}
-          ruleIcon={["fas", "dumbbell"]}
+          ruleIcon={faDumbbell}
         ></Rule>
         <Rule
           ruleHeader={"Drink 4l of water"}
           ruleText={"Must be water - coffee does not count."}
-          ruleIcon={["fas", "glass-water"]}
+          ruleIcon={faGlassWater}
           size="small"
         ></Rule>
         <Rule
           ruleHeader={"Read 10 pages of non-fiction"}
           ruleText={"Personal development, no audiobooks."}
-          ruleIcon={["fas", "book"]}
+          ruleIcon={faBook}
           size="medium"
         ></Rule>
         <Rule
@@ -34,7 +35,7 @@ export default function Rules() {
           ruleText={
             "Take one photo everyday. Preferably  in the same time from the same angle."
           }
-          ruleIcon={["fas", "camera-retro"]}
+          ruleIcon={faCameraRetro}
           size="medium"
         ></Rule>
       </div>

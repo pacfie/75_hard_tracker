@@ -1,3 +1,4 @@
+// import "@/app/icons.js";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Menu } from "./components/Menu";
 import "./globals.css";
@@ -7,7 +8,6 @@ import "@/styles/banner.css";
 import "@/styles/checkboxes.css";
 import "@/styles/daily.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "@/app/icons.js";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

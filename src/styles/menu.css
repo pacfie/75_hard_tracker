@@ -25,7 +25,7 @@
 .ctnr-menu-items ul {
   display: flex;
   gap: 1rem;
-  font-weight: lighter;
+  font-weight: 300;
   list-style: none;
 }
 
