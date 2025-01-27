@@ -1,7 +1,7 @@
 :root {
   --banner-bg-clr: var(--white);
-  --banner-font-clr: var(--black);
-  --banner-counter-bg-clr: var(--pink);
+  --banner-font-clr: var(--dark);
+  --banner-counter-bg-clr: var(--red);
   --banner-border-width: 1px;
 }
 
@@ -30,7 +30,7 @@
 .banner-counter .remaining-days {
   display: block;
   font-size: 2.5rem;
-  font-family: Outfit;
+  font-family: var(--font-head);
   font-weight: 600;
   line-height: 1;
 }

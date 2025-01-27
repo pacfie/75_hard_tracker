@@ -2,9 +2,14 @@ import DayClass from "./classes/DayClass";
 import BookClass from "./classes/BookClass";
 import WorkoutClass from "./classes/WorkoutClass";
 
-let days = [
-    new DayClass(1, 1, "csirkerizs", new WorkoutClass(1, "kondi", "futás"), true, new BookClass(1, "könyvcím", 10), true)
-]
+let days = [];
+const challengeSize = 75;
+
+export const setupDays = () => {
+  for(let i = 1; i < challengeSize + 1; i++){
+    days.push(new DayClass(i, i, "csirkerizs", new WorkoutClass(`wo_${i}`, "kondi", "futás"),  new BookClass(`b_${i}`, "könyvcím", 10)));
+  }
+}
 
 // lista
 export const getAllDays = () => {

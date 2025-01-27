@@ -3,7 +3,7 @@ import { faCarrot, faBook, faDumbbell, faGlassWater, faCameraRetro } from "@fort
 
 export default function Rules() {
   return (
-    <div id="rules-box" className="col-md-10 col-lg-8 col-xl-8 col-xxl-6 mx-auto">
+    <div id="rules-box" className="">
       <h1 className="text-center">Rules</h1>
       <div className="d-grid gap-4 mt-5">
         <Rule

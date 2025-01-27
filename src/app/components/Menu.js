@@ -2,9 +2,40 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useEffect } from "react";
+import Rules from "../(pages)/rules/page";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export function Menu({ content }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showRules, setShowRules] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+
+  function closeRulesWindow() {
+    setIsClosing(true);
+    setTimeout(() => {
+      setShowRules(false);
+      setIsClosing(false);
+    }, 400);
+  }
+
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.key === "Escape" && showRules) {
+        closeRulesWindow();
+      }
+    }
+
+    // Add event listener
+    document.addEventListener("keydown", handleKeyDown);
+
+    // Clean up event listener on component unmount
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [showRules]); // Re-run effect only when `showRules` changes
+
   return (
     <>
       <div id="menu">
@@ -36,13 +67,16 @@ export function Menu({ content }) {
               </Link>
             </li>
             <li>
-              <Link
+              <button
                 title="Rules"
-                href="/rules"
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  setMenuOpen(false);
+                  setShowRules(true);
+                  setIsClosing(false);
+                }}
               >
                 <span>Rules</span>
-              </Link>
+              </button>
             </li>
             <li>
               <Link
@@ -71,9 +105,24 @@ export function Menu({ content }) {
           <div className="profile"></div>
         </div>
       </div>
-      <div className="py-3 py-md-5 px-3">
-        {content}
+      {/* Conditionally render the Rules window */}
+      {showRules && (
+        <div
+          className={`rules-window ${isClosing ? "isClosing" : ""}`}
+          onClick={closeRulesWindow}
+        >
+          <div
+            className="rules-content position-relative col-md-10 col-lg-8 col-xl-8 col-xxl-6 mx-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Rules />
+            <button type="button" title="Close" onClick={closeRulesWindow}>
+              <FontAwesomeIcon icon={faXmark} />
+            </button>
+          </div>
         </div>
+      )}
+      <div className="py-3 py-md-5 px-3">{content}</div>
     </>
   );
 }

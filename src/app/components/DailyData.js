@@ -1,7 +1,7 @@
 import DailyTodo from "./DailyTodo";
 import { faCarrot, faBook, faDumbbell, faGlassWater, faCameraRetro } from "@fortawesome/free-solid-svg-icons";
 
-export default function DailyData({ day }) {
+export default function DailyData({ day, onButtonClick, isCompleted = false }) {
   return (
     <div id="daily-data">
       <DailyTodo header={"Diet"} headerIcon={faCarrot}>
@@ -63,7 +63,7 @@ export default function DailyData({ day }) {
         </div>
       </DailyTodo>
       <div className="complete-btn-cntr text-center py-4" style={{backgroundColor: "var(--white)"}}>
-        <button type="button">{`Completed day ${day.number}`}</button>
+        <button type="button" onClick={() => onButtonClick(day.number)}>{isCompleted ? `Uncomplete day ${day.number}` : `Complete day ${day.number}`}</button>
       </div>
     </div>
   );

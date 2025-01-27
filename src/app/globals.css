@@ -2,16 +2,16 @@
   --white-base: 255, 255, 255;
   --white: rgba(var(--white-base), 1);
   --dark-base: 45, 43, 45;
-  --black: rgba(var(--dark-base), 1);
+  --dark: rgba(var(--dark-base), 1);
   /* Color #1 - green */
   --green-base: 32, 163, 158;
-  --blue: rgba(var(--green-base), 1);
+  --green: rgba(var(--green-base), 1);
   /* Color #2 - red */
   --red-base: 255, 75, 62;
-  --pink: rgba(var(--red-base), 1);
+  --red: rgba(var(--red-base), 1);
   /* Color #3 - yellow */
   --yellow-base: 255, 178, 15;
-  --orange: rgba(var(--yellow-base), 1);
+  --yellow: rgba(var(--yellow-base), 1);
 
   --border-radius: 10px;
   --box-shadow: 1px 1px 6px -2px #999797;
@@ -20,7 +20,7 @@
   --font-text: Roboto;
 
   --background: rgba(var(--green-base), 0.05);
-  --foreground: #171717;
+  --foreground: var(--dark);
 }
 
 @font-face {
@@ -43,7 +43,7 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 body {

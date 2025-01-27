@@ -1,5 +1,5 @@
 export default class DayClass {
-    constructor(id, number, diet, workout, water, book, photo ) {
+    constructor(id, number, diet, workout, book, water = true, photo = true ) {
       this.id = id;
       this.number = number;
       this.diet = diet;

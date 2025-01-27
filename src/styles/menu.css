@@ -1,9 +1,11 @@
 :root {
-  --menu-bg-clr: var(--blue);
+  --menu-bg-clr: var(--green);
   --menu-font-clr: var(--white);
   --menu-font-size: 1.25rem;
   --menu-height: 4rem;
   --menu-padding-inline: 2rem;
+
+  --animation-duration: 0.5s;
 }
 
 #menu {
@@ -29,14 +31,23 @@
   list-style: none;
 }
 
-.ctnr-menu-items li:hover {
-  font-weight: bold;
+.ctnr-menu-items button {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font-weight: inherit;
 }
 
+.ctnr-menu-items li:hover button,
+.ctnr-menu-items li:hover {
+  font-weight: 600;
+}
+
+.ctnr-menu-items button::before,
 .ctnr-menu-items a::before {
   display: block;
   content: attr(title);
-  font-weight: bold;
+  font-weight: 600;
   height: 0;
   overflow: hidden;
   visibility: hidden;
@@ -51,7 +62,7 @@
 }
 
 .profile.logged-in {
-  border: 3px solid var(--pink);
+  border: 3px solid var(--red);
 }
 
 .inline-profile {
@@ -82,7 +93,7 @@ progress {
 
 progress::-moz-progress-bar,
 progress::-webkit-progress-bar {
-  background: var(--orange);
+  background: var(--yellow);
 }
 
 .menu-toggle {
@@ -144,5 +155,114 @@ progress::-webkit-progress-bar {
     display: flex;
     align-items: center;
     gap: 1rem;
+  }
+}
+
+.rules-window {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  animation-name: applyBg;
+  animation-duration: var(--animation-duration);
+}
+
+.rules-content {
+  animation-name: slideDown;
+  animation-duration: var(--animation-duration);
+}
+
+.rules-window.isClosing .rules-content {
+  animation-name: slideUp;
+  animation-duration: var(--animation-duration);
+}
+
+.rules-window.isClosing {
+  animation: fadeBg;
+  animation-duration: var(--animation-duration);
+}
+
+.rules-content button {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  width: 4rem;
+  aspect-ratio: 1;
+  border: 3px solid var(--white);
+  border-radius: 50%;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 1.5rem;
+  box-shadow: 12px -5px 15px -3px #333;
+}
+
+#rules-box {
+  animation: applyShadow;
+  animation-duration: var(--animation-duration);
+}
+
+.rules-window.isClosing #rules-box {
+  /* animation: fadeShadow;
+  animation-duration: var(--animation-duration); */
+  animation-direction: reverse;
+}
+
+@keyframes slideDown {
+  from {
+    top: -100%;
+  }
+  to {
+    top: 0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    top: 0;
+  }
+  to {
+    top: -100%;
+  }
+}
+
+@keyframes fadeBg {
+  from {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+@keyframes applyBg {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+@keyframes fadeShadow {
+  from {
+    box-shadow: 3px 3px 15px 6px #333;
+  }
+  to {
+    box-shadow: none;
+  }
+}
+
+@keyframes applyShadow {
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 3px 3px 15px 6px #333;
   }
 }

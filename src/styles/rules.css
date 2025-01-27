@@ -1,23 +1,21 @@
 :root {
-  --box-color: var(--blue);
-  --rules-icon-bg-color: var(--orange);
+  --rules-icon-bg-color: var(--yellow);
 }
 
 #rules-box {
   --icon-cntr-width: 4rem;
   padding: 2rem;
-  border: 3px solid var(--box-color);
   border-radius: var(--border-radius);
-  background-color: var(--white);
+  background-color: var(--white);  
+  box-shadow: 3px 3px 15px 6px #333;
 }
 
 #rules-box h1,
 #rules-box h3 {
-  font-family: Outfit;
+  font-family: var(--font-head);
 }
 
 #rules-box p {
-  /* padding-left: calc(var(--icon-cntr-width) + 1rem); */
   font-size: 1.125rem;
   font-style: italic;
   font-weight: 300;
@@ -35,14 +33,7 @@
   color: var(--white);
 }
 
-#rules-box svg.big {
+#rules-box svg {
   width: 2rem;
-}
-
-#rules-box svg.medium {
-  width: 1.75rem;
-}
-
-#rules-box svg.small {
-  width: 1.5rem;
+  height: 2rem;
 }

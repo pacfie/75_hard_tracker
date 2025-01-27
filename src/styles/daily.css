@@ -1,5 +1,5 @@
 :root {
-  --complete-btn-font-clr: var(--orange);
+  --complete-btn-font-clr: var(--yellow);
   --complete-btn-bg-clr: var(--white);
 }
 
@@ -25,7 +25,7 @@
   padding-block: 0.5rem;
   padding-inline: 1rem;
   background-color: rgba(var(--green-base), 0.2);
-  font-family: Outfit;
+  font-family: var(--font-head);
   font-size: 1.25rem;
 }
 
@@ -57,10 +57,23 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 300;
-  font-family: Outfit;
+  font-family: var(--font-head);
 }
 
 .complete-btn-cntr button:hover {
   background-color: var(--complete-btn-font-clr);
   color: var(--complete-btn-bg-clr);
+}
+
+#day-placeholder {
+  display: grid;
+  place-content: center;
+  height: 100%;
+  min-height: 10rem;
+  border: 4px dashed;
+  border-radius: var(--border-radius);
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
