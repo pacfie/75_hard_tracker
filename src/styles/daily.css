@@ -1,15 +1,18 @@
 :root {
   --complete-btn-font-clr: var(--yellow);
   --complete-btn-bg-clr: var(--white);
+  --day-placeholder-font-clr: #888787;
+  --checkbox-checked-bg-clr: var(--red);
+  --checkbox-width-small: 1.5rem;
+  --checkbox-width-big: 2.5rem;
 }
 
 #daily-data {
-  display: grid;
   height: fit-content;
-  /* padding: 1.5rem; */
-  /* border: 1px solid; */
+  padding: 1.5rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  background: var(--white);
 }
 
 #daily-data svg {
@@ -21,7 +24,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* gap: 1.5rem; */
   padding-block: 0.5rem;
   padding-inline: 1rem;
   background-color: rgba(var(--green-base), 0.2);
@@ -38,26 +40,29 @@
   width: 100%;
 }
 
-.daily-todo-content textarea{
+.daily-todo-content textarea {
   border-radius: var(--border-radius);
 }
 
 .complete-btn-cntr {
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
+  background-color: var(--white);
+  padding-block: 1.5rem;
 }
 
 .complete-btn-cntr button {
   padding-block: 0.5rem;
   padding-inline: 1.5rem;
-  border: 1px solid var(--complete-btn-font-clr);
+  border: 3px solid var(--complete-btn-font-clr);
   border-radius: 20px;
-  background-color: transparent;
+  background-color: var(--complete-btn-bg-clr);
   color: var(--complete-btn-font-clr);
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-weight: 300;
+  font-weight: 600;
   font-family: var(--font-head);
+  font-size: 1.25rem;
 }
 
 .complete-btn-cntr button:hover {
@@ -65,6 +70,48 @@
   color: var(--complete-btn-bg-clr);
 }
 
+/* CHECKBOXES */
+.custom-checkbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50px;
+  padding-block: 0.75rem;
+  padding-inline: 0.5rem;
+  border-radius: 5px;
+}
+
+.custom-checkbox .form-check-input {
+  margin: 0;
+  border: 1px solid var(--dark);
+  cursor: pointer;
+}
+
+.custom-checkbox .form-check-input.small {
+  width: var(--checkbox-width-small);
+  height: var(--checkbox-width-small);
+}
+
+.custom-checkbox .form-check-input.big {
+  width: var(--checkbox-width-big);
+  height: var(--checkbox-width-big);
+}
+
+.custom-checkbox .form-check-input:checked {
+  background-color: var(--checkbox-checked-bg-clr);
+  border-color: var(--checkbox-checked-bg-clr);
+}
+
+.custom-checkbox .form-check-input:focus {
+  border-color: var(--dark);
+  box-shadow: none;
+}
+
+.custom-checkbox:not(.selected-checkbox):has(.form-check-input:focus-visible){
+  background-color: rgba(var(--yellow-base), 0.2);
+}
+
+/* PLACEHOLDER */
 #day-placeholder {
   display: grid;
   place-content: center;
@@ -76,4 +123,5 @@
   font-size: 1.5rem;
   font-weight: 300;
   letter-spacing: 1px;
+  color: var(--day-placeholder-font-clr);
 }

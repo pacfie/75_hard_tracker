@@ -6,6 +6,7 @@
   --menu-padding-inline: 2rem;
 
   --animation-duration: 0.5s;
+  --box-shadow-clr: #333333d6;
 }
 
 #menu {
@@ -191,7 +192,7 @@ progress::-webkit-progress-bar {
 .rules-content button {
   position: absolute;
   top: -1rem;
-  right: -1rem;
+  right: 0;
   width: 4rem;
   aspect-ratio: 1;
   border: 3px solid var(--white);
@@ -199,7 +200,7 @@ progress::-webkit-progress-bar {
   background-color: var(--red);
   color: var(--white);
   font-size: 1.5rem;
-  box-shadow: 12px -5px 15px -3px #333;
+  box-shadow: 12px -5px 15px -3px var(--box-shadow-clr);
 }
 
 #rules-box {
@@ -208,9 +209,8 @@ progress::-webkit-progress-bar {
 }
 
 .rules-window.isClosing #rules-box {
-  /* animation: fadeShadow;
-  animation-duration: var(--animation-duration); */
-  animation-direction: reverse;
+  animation: fadeShadow;
+  animation-duration: var(--animation-duration);
 }
 
 @keyframes slideDown {
@@ -251,7 +251,7 @@ progress::-webkit-progress-bar {
 
 @keyframes fadeShadow {
   from {
-    box-shadow: 3px 3px 15px 6px #333;
+    box-shadow: 3px 3px 15px 6px var(--box-shadow-clr);
   }
   to {
     box-shadow: none;
@@ -263,6 +263,6 @@ progress::-webkit-progress-bar {
     box-shadow: none;
   }
   to {
-    box-shadow: 3px 3px 15px 6px #333;
+    box-shadow: 3px 3px 15px 6px var(--box-shadow-clr);
   }
 }

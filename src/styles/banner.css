@@ -1,7 +1,7 @@
 :root {
   --banner-bg-clr: var(--white);
   --banner-font-clr: var(--dark);
-  --banner-counter-bg-clr: var(--red);
+  --banner-counter-bg-clr: var(--yellow);
   --banner-border-width: 1px;
 }
 

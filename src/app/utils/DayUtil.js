@@ -1,33 +1,44 @@
-import DayClass from "./classes/DayClass";
-import BookClass from "./classes/BookClass";
-import WorkoutClass from "./classes/WorkoutClass";
-
-let days = [];
-const challengeSize = 75;
-
-export const setupDays = () => {
-  for(let i = 1; i < challengeSize + 1; i++){
-    days.push(new DayClass(i, i, "csirkerizs", new WorkoutClass(`wo_${i}`, "kondi", "futás"),  new BookClass(`b_${i}`, "könyvcím", 10)));
+export const initializeDays = (size) => {
+  let days = [];
+  for (let i = 1; i < size + 1; i++) {
+    days.push({
+      id: i,
+      number: i,
+      diet: "",
+      workout: {
+        first: "",
+        second: "",
+      },
+      book: {
+        title: "",
+        pages: 10,
+      },
+      rating: 0,
+      checkboxes: {
+        diet: false,
+        water: false,
+        workout: false,
+        book: false,
+        progressPhoto: false
+      }
+    });
   }
-}
-
-// lista
-export const getAllDays = () => {
   return days;
 };
 
-export const getDay = (number) =>{
-    return days.find(d => d.number == number);
+export const getDayFromNumber = (days, number) => {
+  return days.find((d) => d.number == number);
+};
+
+export const addDays = (date, number) => {
+  let d = new Date(date);
+  d.setDate(d.getDate() + number - 1);
+  return d;
+};
+
+export const isBeforeToday = (date) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return date < today;
 }
-
-// // hozzáadás
-// export const addWorkout = (name) => {
-//   const newWorkout = new WorkoutClass(workouts.length + 1, name);
-//   workouts.push(newWorkout);
-//   return newWorkout;
-// };
-
-// // törlés
-// export const removeWorkout = (id) => {
-//   workouts = workouts.filter(workout => workout.id !== id);
-// };

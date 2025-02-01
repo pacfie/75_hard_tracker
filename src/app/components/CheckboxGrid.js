@@ -1,12 +1,14 @@
 "use client";
 
-import Checkbox from "./Checkbox";
 import { useState } from "react";
+import DayBlock from "./DayBlock";
+import * as DayUtil from "@/app/utils/DayUtil";
 
 export default function CheckboxGrid({
   onDaySelect,
-  challengeSize = 75,
-  tickedBoxes
+  challengeSize,
+  tickedBoxes,
+  startDate,
 }) {
   const [selectedDayNumber, setSelectedDayNumber] = useState(null);
 
@@ -15,20 +17,30 @@ export default function CheckboxGrid({
     onDaySelect(day);
   }
 
+  function getDayState(dayNumber) {
+    return tickedBoxes && tickedBoxes.includes(dayNumber)
+      ? "completed"
+      : DayUtil.isBeforeToday(DayUtil.addDays(startDate, dayNumber))
+      ? "failed"
+      : "";
+  }
+
+  function isSelected(dayNumber) {
+    return selectedDayNumber && selectedDayNumber === dayNumber
+      ? "selected-day"
+      : "";
+  }
+
   return (
-    <div id="checkbox-grid">
+    <div id="day-list-grid">
       {[...Array(challengeSize).keys()].map((key, index) => (
-        <Checkbox
+        <DayBlock
           key={key}
-          dayNumber={index + 1}
-          onDaySelected={handleDaySelection}
-          isChecked={tickedBoxes.includes(key + 1)}
-          classes={
-            selectedDayNumber && selectedDayNumber === index + 1
-              ? "selected-checkbox"
-              : ""
-          }
-        ></Checkbox>
+          number={index + 1}
+          onDayClick={handleDaySelection}
+          classes={`${isSelected(index + 1)} ${getDayState(index + 1)}`}
+          isOpen={DayUtil.isBeforeToday(DayUtil.addDays(startDate, index))}
+        />
       ))}
     </div>
   );

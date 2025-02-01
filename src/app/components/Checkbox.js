@@ -1,27 +1,21 @@
 "use client";
 
 export default function Checkbox({
-  dayNumber,
   size = "small",
-  needLabel = true,
-  onDaySelected,
-  classes,
-  isChecked
+  onCheckboxChanged,
+  classes = "",
+  isChecked,
+  id,
 }) {
-  function handleDayClick(e) {
-    e.preventDefault(); // preventing checkbox tick
-    onDaySelected(dayNumber);
-  }
-
   return (
-    <div className={`custom-checkbox ${classes}`} onClick={handleDayClick}>
+    <div className={`custom-checkbox ${classes}`}>
       <input
         type="checkbox"
+        id={id}
         className={`form-check-input ${size}`}
         checked={isChecked}
-        onChange={() => handleDayClick}
+        onChange={(e) => onCheckboxChanged(e.target.checked)}
       ></input>
-      {needLabel && <label>Day {dayNumber}</label>}
     </div>
   );
 }

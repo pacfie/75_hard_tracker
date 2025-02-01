@@ -6,11 +6,13 @@ import { useEffect } from "react";
 import Rules from "../(pages)/rules/page";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useChallenge } from "../utils/contexts/ChallengeContext";
 
-export function Menu({ content }) {
+export function Menu({ challengeSize }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showRules, setShowRules] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const { tickedBoxes } = useChallenge();
 
   function closeRulesWindow() {
     setIsClosing(true);
@@ -26,7 +28,6 @@ export function Menu({ content }) {
         closeRulesWindow();
       }
     }
-
     // Add event listener
     document.addEventListener("keydown", handleKeyDown);
 
@@ -52,8 +53,8 @@ export function Menu({ content }) {
           </Link>
         </div>
         <div className="ctnr-progress-bar">
-          <progress min={0} value={40} max={100} />
-          <span className="progress-text">40% completed</span>
+          <progress min={0} value={tickedBoxes.length} max={challengeSize} />
+          <span className="progress-text">{Math.round(tickedBoxes.length / challengeSize * 100)}% completed</span>
         </div>
         <nav className={`ctnr-menu-items ${menuOpen ? "show" : "hide"}`}>
           <ul>
@@ -112,7 +113,7 @@ export function Menu({ content }) {
           onClick={closeRulesWindow}
         >
           <div
-            className="rules-content position-relative col-md-10 col-lg-8 col-xl-8 col-xxl-6 mx-auto"
+            className="rules-content position-relative px-4 col-md-10 col-lg-8 col-xl-8 col-xxl-6 mx-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <Rules />
@@ -122,7 +123,7 @@ export function Menu({ content }) {
           </div>
         </div>
       )}
-      <div className="py-3 py-md-5 px-3">{content}</div>
+      
     </>
   );
 }

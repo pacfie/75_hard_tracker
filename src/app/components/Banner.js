@@ -1,10 +1,10 @@
 import BannerDate from "./BannerDate"
 import BannerCounter from "./BannerCounter"
 
-export default function Banner({classes, challengeSize, d = new Date("2025.01.13."), tickedBoxes }){
+export default function Banner({classes, challengeSize, d, tickedBoxes }){
 
     let startDate = d.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' });
-    let endDate = addDays(d, 75).toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' });
+    let endDate = addDays(d, challengeSize).toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' });
     let remainingDays = challengeSize - tickedBoxes.length;
 
     function addDays(date, days) {

@@ -1,0 +1,62 @@
+:root {
+  --day-bg-clr: aliceblue;
+  --selected-day-bg-clr: var(--yellow);
+}
+
+#day-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
+  gap: 0.5rem;
+  position: sticky;
+  top: 0.5rem;
+  height: fit-content;
+  padding: 1.25rem;
+  border-radius: var(--border-radius);
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+  justify-items: center;
+}
+
+/* @container day-list-grid-container (width < 400px){
+  #day-list-grid {
+    grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
+  }
+} */
+
+.day-block {
+  display: grid;
+  place-content: center;
+  width: 3rem;
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--day-bg-clr);
+  box-shadow: 2px 2px 2px -1px #aaa;
+  font-family: Outfit;
+  transition: scale 0.3s, box-shadow 0.3s;
+}
+
+.day-block:not(button:disabled):hover {
+  scale: 1.2;
+  box-shadow: 2px 2px 2px 1px #aaa;
+}
+
+.day-block.completed {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.day-block.failed {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.day-block.selected-day {
+  background-color: var(--selected-day-bg-clr);
+  color: var(--white);
+  font-weight: 500;
+}
+
+.day-block:not(.selected-day):focus {
+  background-color: var(--selected-day-bg-clr);
+}

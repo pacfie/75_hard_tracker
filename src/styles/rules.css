@@ -7,7 +7,7 @@
   padding: 2rem;
   border-radius: var(--border-radius);
   background-color: var(--white);  
-  box-shadow: 3px 3px 15px 6px #333;
+  box-shadow: 3px 3px 15px 6px var(--box-shadow-clr);
 }
 
 #rules-box h1,

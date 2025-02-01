@@ -1,69 +1,187 @@
-import DailyTodo from "./DailyTodo";
-import { faCarrot, faBook, faDumbbell, faGlassWater, faCameraRetro } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
+import Checkbox from "./Checkbox";
+import {
+  faCarrot,
+  faBook,
+  faDumbbell,
+  faGlassWater,
+  faCameraRetro,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function DailyData({ day, onButtonClick, isCompleted = false }) {
+export default function DailyData({
+  day
+}) {
+  const defaultDayData = {
+    number: 0,
+    diet: "",
+    workout: {
+      first: "",
+      second: "",
+    },
+    book: {
+      title: "",
+      pages: "",
+    },
+    rating: 0,
+    checkboxes: {
+      diet: false,
+      water: false,
+      workout: false,
+      book: false,
+      progressPhoto: false,
+    },
+  };
+  
+  const allIcons = [
+    { id: "diet", icon: faCarrot },
+    { id: "workout", icon: faDumbbell },
+    { id: "book", icon: faBook },
+    { id: "water", icon: faGlassWater },
+    { id: "progressPhoto", icon: faCameraRetro },
+  ];
+  
+  const [dayData, setDayData] = useState(defaultDayData);
+
+  // after a new day has been selected
+  useEffect(() => {
+    const storedData = localStorage.getItem("challengeData");
+    if (storedData) {
+      let challengeData = JSON.parse(storedData);
+      const newDayData = challengeData[day.number - 1] || { id: day.number, number: day.number, diet: "", workout: {}, book: {}, rating: 0, checkboxes: {} };
+      setDayData(newDayData);
+    }
+  }, [day]);
+  
+  // save dayData to localStorage
+  useEffect(() => {
+    if (dayData.number === 0) return;
+
+    const storedData = localStorage.getItem("challengeData") || "[]";
+    let challengeData = JSON.parse(storedData);
+    challengeData[dayData.number - 1] = dayData;
+    localStorage.setItem("challengeData", JSON.stringify(challengeData));
+  }, [dayData]);
+
+  // handling/counting checkbox ticks
+  const handleCheckboxTick = (field, value) => {
+    setDayData((prev) => ({
+      ...prev,
+      checkboxes: {
+        ...prev.checkboxes,
+        [field]: value,
+      },
+    }));
+  };
+
   return (
     <div id="daily-data">
-      <DailyTodo header={"Diet"} headerIcon={faCarrot}>
-        <div>
+      <div className="mb-5">
+        <h1>Day {dayData.number}</h1>
+        <div className="d-flex justify-content-center gap-2 flex-wrap">
+          {allIcons.map(({ id, icon }) => (
+            <div
+              key={`${id}-box`}
+              className="text-center"
+              style={{ fontSize: "1.5rem" }}
+            >
+              <FontAwesomeIcon icon={icon} />
+              <Checkbox
+                id={`${id}-check`}
+                size="big"
+                isChecked={dayData.checkboxes[id]}
+                onCheckboxChanged={(checked) => handleCheckboxTick(id, checked)}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="d-grid gap-4">
+        <div className="w-100">
           <label htmlFor="diet-input" className="form-label">
             What did you eat during the day?
           </label>
-          <textarea className="form-control form-control-sm" id="diet-input" rows="3"></textarea>
-        </div>
-      </DailyTodo>
-      <DailyTodo header={"Workouts"} headerIcon={faDumbbell}>
-        <div>
-          <label htmlFor="workout-outdoor-input" className="form-label">
-            What did you do as your outdoor workout?
-          </label>
           <textarea
             className="form-control form-control-sm"
-            id="workout-outdoor-input"
+            id="diet-input"
             rows="3"
+            value={dayData.diet}
+            onChange={(e) =>
+              setDayData((prev) => ({ ...prev, diet: e.target.value }))
+            }
           ></textarea>
         </div>
-        <div className="mt-3">
-          <label htmlFor="workout-indoor-input" className="form-label">
-            What did you do as your indoor workout?
-          </label>
-          <textarea
-            className="form-control form-control-sm"
-            id="workout-indoor-input"
-            rows="3"
-          ></textarea>
+        <div className="w-100">
+          <div>
+            <label htmlFor="workout-outdoor-input" className="form-label">
+              What did you do as your outdoor workout?
+            </label>
+            <textarea
+              className="form-control form-control-sm"
+              id="workout-outdoor-input"
+              rows="3"
+              value={dayData.workout.first}
+              onChange={(e) =>
+                setDayData((prev) => ({
+                  ...prev,
+                  workout: { ...prev.workout, first: e.target.value },
+                }))
+              }
+            ></textarea>
+          </div>
+          <div className="mt-3">
+            <label htmlFor="workout-indoor-input" className="form-label">
+              What did you do as your indoor workout?
+            </label>
+            <textarea
+              className="form-control form-control-sm"
+              id="workout-indoor-input"
+              rows="3"
+              value={dayData.workout.second}
+              onChange={(e) =>
+                setDayData((prev) => ({
+                  ...prev,
+                  workout: { ...prev.workout, second: e.target.value },
+                }))
+              }
+            ></textarea>
+          </div>
         </div>
-      </DailyTodo>
-      <DailyTodo header={"Water intake"} headerIcon={faGlassWater}>
-        <div>
-          <label htmlFor="water-input" className="form-label m-0">
-            Did you drink enough water today?
-          </label>
+        <div className="w-100">
+          <div>
+            <label htmlFor="book-input" className="form-label">
+              What book did you read today?
+            </label>
+            <input
+              id="book-input"
+              className="form-control form-control-sm"
+              value={dayData.book.title}
+              onChange={(e) =>
+                setDayData((prev) => ({
+                  ...prev,
+                  book: { ...prev.book, title: e.target.value },
+                }))
+              }
+            ></input>
+          </div>
+          <div className="d-flex align-items-center gap-2 mt-3">
+            <label htmlFor="pages-input" className="form-label m-0">
+              Pages:
+            </label>
+            <input
+              id="pages-input"
+              className="form-control form-control-sm"
+              style={{ width: "5rem" }}
+              value={dayData.book.pages}
+              onChange={(e) =>
+                setDayData((prev) => ({
+                  ...prev,
+                  book: { ...prev.book, pages: e.target.value },
+                }))
+              }
+            ></input>
+          </div>
         </div>
-      </DailyTodo>
-      <DailyTodo header={"Reading"} headerIcon={faBook}>
-        <div>
-          <label htmlFor="book-input" className="form-label">
-            What book did you read today?
-          </label>
-          <input id="book-input" className="form-control form-control-sm"></input>
-        </div>
-        <div className="d-flex align-items-center gap-2 mt-3">
-          <label htmlFor="pages-input" className="form-label m-0">
-            Pages:
-          </label>
-          <input id="pages-input" className="form-control form-control-sm" style={{width: "5rem"}}></input>
-        </div>
-      </DailyTodo>
-      <DailyTodo header={"Progress photo"} headerIcon={faCameraRetro}>
-        <div>
-          <label htmlFor="progress-photo-input" className="form-label m-0">
-            Did you take a progress photo?
-          </label>
-        </div>
-      </DailyTodo>
-      <div className="complete-btn-cntr text-center py-4" style={{backgroundColor: "var(--white)"}}>
-        <button type="button" onClick={() => onButtonClick(day.number)}>{isCompleted ? `Uncomplete day ${day.number}` : `Complete day ${day.number}`}</button>
       </div>
     </div>
   );
