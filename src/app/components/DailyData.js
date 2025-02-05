@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Checkbox from "./Checkbox";
 import {
   faCarrot,
@@ -9,11 +9,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function DailyData({
-  day
-}) {
+export default function DailyData({ day, onTickedBoxesChange }) {
   const defaultDayData = {
-    number: 0,
+    number: day.number,
     diet: "",
     workout: {
       first: "",
@@ -32,7 +30,7 @@ export default function DailyData({
       progressPhoto: false,
     },
   };
-  
+
   const allIcons = [
     { id: "diet", icon: faCarrot },
     { id: "workout", icon: faDumbbell },
@@ -40,7 +38,7 @@ export default function DailyData({
     { id: "water", icon: faGlassWater },
     { id: "progressPhoto", icon: faCameraRetro },
   ];
-  
+
   const [dayData, setDayData] = useState(defaultDayData);
 
   // after a new day has been selected
@@ -48,37 +46,78 @@ export default function DailyData({
     const storedData = localStorage.getItem("challengeData");
     if (storedData) {
       let challengeData = JSON.parse(storedData);
-      const newDayData = challengeData[day.number - 1] || { id: day.number, number: day.number, diet: "", workout: {}, book: {}, rating: 0, checkboxes: {} };
+      const newDayData = challengeData[day.number - 1];
       setDayData(newDayData);
     }
   }, [day]);
-  
+
   // save dayData to localStorage
   useEffect(() => {
     if (dayData.number === 0) return;
+    const timeoutId = setTimeout(() => {
+      const storedData = localStorage.getItem("challengeData") || "[]";
+      let challengeData = JSON.parse(storedData);
 
-    const storedData = localStorage.getItem("challengeData") || "[]";
-    let challengeData = JSON.parse(storedData);
-    challengeData[dayData.number - 1] = dayData;
-    localStorage.setItem("challengeData", JSON.stringify(challengeData));
+      challengeData[dayData.number - 1] = dayData;
+
+      localStorage.setItem("challengeData", JSON.stringify(challengeData));
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
   }, [dayData]);
 
   // handling/counting checkbox ticks
   const handleCheckboxTick = (field, value) => {
-    setDayData((prev) => ({
-      ...prev,
-      checkboxes: {
-        ...prev.checkboxes,
-        [field]: value,
-      },
-    }));
+    // if the last is checked or only one is unchecked
+    setTimeout(() => {
+      if (lastChecked(field, value, dayData.checkboxes)) {
+        onTickedBoxesChange(dayData.number, true);
+      }
+      else if(firstUnchecked(value, dayData.checkboxes)){
+        onTickedBoxesChange(dayData.number, false);
+      }
+    }, 200);
+
+    setDayData((prev) => {
+      const updatedData = {
+        ...prev,
+        checkboxes: {
+          ...prev.checkboxes,
+          [field]: value,
+        },
+      };
+      return updatedData;
+    });
   };
+
+  // first checkbox is unchecked
+  function firstUnchecked(value, checkboxes) {
+    if (value) return false;
+  
+    return Object.entries(checkboxes).every(([, val]) => val === true);
+  }
+
+  // last checkbox is checked
+  function lastChecked(field, value, checkboxes) {
+    if (!value) return false;
+
+    const updatedCheckboxes = { ...checkboxes, [field]: value };
+    return Object.entries(updatedCheckboxes)
+      .filter(([key]) => key !== field)
+      .every(([, val]) => val === true);
+  }
 
   return (
     <div id="daily-data">
       <div className="mb-5">
         <h1>Day {dayData.number}</h1>
-        <div className="d-flex justify-content-center gap-2 flex-wrap">
+        <div
+          className="d-flex justify-content-center gap-2 flex-wrap py-2"
+          style={{
+            backgroundColor: "aliceblue",
+            borderRadius: "var(--border-radius)",
+          }}
+        >
           {allIcons.map(({ id, icon }) => (
             <div
               key={`${id}-box`}

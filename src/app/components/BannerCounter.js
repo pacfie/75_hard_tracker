@@ -2,7 +2,7 @@ export default function BannerCounter({remainingDays}){
     return (
         <div className="banner-counter">
             <span className="remaining-days">{remainingDays}</span>
-            <label>days left</label>
+            <label>{remainingDays > 1 ? "days" : "day"} left</label>
         </div>
     )
 }

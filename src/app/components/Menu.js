@@ -9,10 +9,11 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useChallenge } from "../utils/contexts/ChallengeContext";
 
 export function Menu({ challengeSize }) {
+  const [loading, setLoading] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showRules, setShowRules] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const { tickedBoxes } = useChallenge();
+  const { tickedBoxes, setTickedBoxes } = useChallenge([]);
 
   function closeRulesWindow() {
     setIsClosing(true);
@@ -22,6 +23,25 @@ export function Menu({ challengeSize }) {
     }, 400);
   }
 
+  // set completed days
+  useEffect(() => {
+    setLoading(true);
+    const storedData = localStorage.getItem("challengeData");
+    if (storedData) {
+      const challengeData = JSON.parse(storedData);
+
+      const completedDays = challengeData
+        .filter((day) =>
+          Object.values(day.checkboxes).every((value) => value === true)
+        )
+        .map((day) => day.number);
+
+      setTickedBoxes(completedDays);
+    }
+    setLoading(false);
+  }, [setTickedBoxes]);
+
+  // ESC to close Rules
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.key === "Escape" && showRules) {
@@ -35,7 +55,7 @@ export function Menu({ challengeSize }) {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [showRules]); // Re-run effect only when `showRules` changes
+  }, [showRules]);
 
   return (
     <>
@@ -53,8 +73,24 @@ export function Menu({ challengeSize }) {
           </Link>
         </div>
         <div className="ctnr-progress-bar">
-          <progress min={0} value={tickedBoxes.length} max={challengeSize} />
-          <span className="progress-text">{Math.round(tickedBoxes.length / challengeSize * 100)}% completed</span>
+          {loading ? (
+            <div className="loading-ctnr">
+            <span className="fst-italic">Loading progress bar...</span>
+            <p className="loader m-0"></p>
+            </div>
+          ) : (
+            <>
+              <progress
+                min={0}
+                value={tickedBoxes.length}
+                max={challengeSize}
+              />
+              <span className="progress-text">
+                {Math.round((tickedBoxes.length / challengeSize) * 100)}%
+                completed
+              </span>
+            </>
+          )}
         </div>
         <nav className={`ctnr-menu-items ${menuOpen ? "show" : "hide"}`}>
           <ul>
@@ -123,7 +159,6 @@ export function Menu({ challengeSize }) {
           </div>
         </div>
       )}
-      
     </>
   );
 }

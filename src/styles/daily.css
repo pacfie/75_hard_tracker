@@ -117,6 +117,7 @@
   place-content: center;
   height: 100%;
   min-height: 10rem;
+  padding-inline: 1rem;
   border: 4px dashed;
   border-radius: var(--border-radius);
   font-family: var(--font-head);

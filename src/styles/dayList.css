@@ -17,12 +17,6 @@
   justify-items: center;
 }
 
-/* @container day-list-grid-container (width < 400px){
-  #day-list-grid {
-    grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
-  }
-} */
-
 .day-block {
   display: grid;
   place-content: center;
@@ -51,12 +45,8 @@
   color: var(--white);
 }
 
-.day-block.selected-day {
+.day-block.selected-day,.day-block:not(.selected-day):focus {
   background-color: var(--selected-day-bg-clr);
   color: var(--white);
   font-weight: 500;
-}
-
-.day-block:not(.selected-day):focus {
-  background-color: var(--selected-day-bg-clr);
 }

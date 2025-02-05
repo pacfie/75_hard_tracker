@@ -36,6 +36,12 @@ export const addDays = (date, number) => {
   return d;
 };
 
+export const daysBetween = (date1, date2) => {
+  const oneDay = 1000 * 60 * 60 * 24;
+  const diffInTime = Math.abs(new Date(date2) - new Date(date1));
+  return Math.floor(diffInTime / oneDay);
+}
+
 export const isBeforeToday = (date) => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);

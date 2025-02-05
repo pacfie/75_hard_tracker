@@ -35,6 +35,13 @@
   line-height: 1;
 }
 
+
+@media (max-width: 300px) {
+  #banner .banner-date {
+    display: none !important;
+  }
+}
+
 @media (min-width: 769px) {
   #banner {
     /* border: var(--banner-border-width) solid var(--banner-font-clr); */

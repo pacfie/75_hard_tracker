@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Banner from "@/app/components/Banner";
 import CheckboxGrid from "@/app/components/CheckboxGrid";
 import DailyData from "@/app/components/DailyData";
@@ -11,32 +11,51 @@ import { useChallenge } from "@/app/utils/contexts/ChallengeContext";
 
 export default function Challenge() {
   const challengeSize = config.challengeSize;
-  const startDate = new Date("2025.01.13.");
+  const startDate = config.startDate;
   const [selectedDay, setSelectedDay] = useState(null);
   const { tickedBoxes, setTickedBoxes } = useChallenge([]);
   const [days, setDays] = useState(() => {
-    if (typeof window === "undefined") return DayUtil.initializeDays(challengeSize);
+    if (typeof window === "undefined")
+      return DayUtil.initializeDays(challengeSize);
     const storedData = localStorage.getItem("challengeData");
-    return storedData
-      ? JSON.parse(storedData)
-      : DayUtil.initializeDays(challengeSize);
+    if (storedData) {
+      return JSON.parse(storedData);
+    } else {
+      let initialDays = DayUtil.initializeDays(challengeSize);
+      localStorage.setItem("challengeData", JSON.stringify(initialDays));
+      return initialDays;
+    }
   });
 
-  // useEffect(() => {
-  //   localStorage.setItem("challengeData", JSON.stringify(days));
-  // }, [days]);
+  // set completed days
+  useEffect(() => {
+    const storedData = localStorage.getItem("challengeData");
+    if (storedData) {
+      const challengeData = JSON.parse(storedData);
 
+      // Ellenőrizzük, mely napok összes checkboxa true
+      const completedDays = challengeData
+        .filter((day) =>
+          Object.values(day.checkboxes).every((value) => value === true)
+        )
+        .map((day) => day.number); // Csak a nap számait tároljuk
+
+      setTickedBoxes(completedDays);
+    }
+  }, [setTickedBoxes]);
+
+  // day selection
   function handleDaySelection(dayNumber) {
     const dayObj = days.find((d) => d.number === dayNumber);
     setSelectedDay(dayObj);
   }
 
-  const handleSave = useCallback((updatedDay) => {
-    setDays((prevDays) =>
-      prevDays.map((d) => (d.number === updatedDay.number ? updatedDay : d))
-    ); // this triggers a re-render but only days are updated, selectedDay is still the same, therefore dispalying the original value
-    //setSelectedDay(updatedDay); // need this to update selectedDay and re-render with the correct values
-  }, []);
+  // (un)complete the day
+  const handleCheckboxToggle = useCallback((day, completed) => {
+    setTickedBoxes((prev) =>
+      completed ? [...prev, day] : prev.filter((d) => d !== day)
+    );
+  }, [setTickedBoxes]);
 
 
   function DayPanel() {
@@ -44,20 +63,11 @@ export default function Challenge() {
       return (
         <DailyData
           day={selectedDay}
-          isCompleted={tickedBoxes && tickedBoxes.includes(selectedDay.number)}
+          onTickedBoxesChange={handleCheckboxToggle}
         />
       );
     }
     return <DayPlaceholder />;
-  }
-
-  function handleCheckboxToggle(day) {
-    setTickedBoxes(
-      (prev) =>
-        prev.includes(day)
-          ? prev.filter((d) => d !== day) // Uncheck if already ticked
-          : [...prev, day] // Add to ticked list if not ticked
-    );
   }
 
   return (
