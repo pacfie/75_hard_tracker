@@ -64,7 +64,7 @@ body {
     content: "";
     background:
     url('../images/pushup.png') no-repeat left bottom / 25%, 
-    url('../images/pullup.png') no-repeat right bottom 5rem / 15rem;
+    url('../images/pullup.png') no-repeat right bottom 50% / 15rem;
     background-attachment: fixed;
     position: absolute;
     z-index: -1;

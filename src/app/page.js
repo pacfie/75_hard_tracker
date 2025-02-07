@@ -2,17 +2,17 @@
 
 import Image from "next/image";
 import rockyPhoto from "@/images/rocky.png";
-import pullupPhoto from "@/images/pullup.png";
-import pushupPhoto from "@/images/pushup.png";
+import highlight1 from "@/images/screenshot1.png";
 import { useRules } from "./utils/contexts/RulesContext";
 import { useRouter } from "next/navigation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSeedling,
   faChartLine,
   faLock,
 } from "@fortawesome/free-solid-svg-icons";
-import  Carousel from "./components/Carousel.js";
+import Carousel from "./components/Carousel.js";
+import DashboardCard from "./components/DashboardCard";
+import DashboardHighlight from "./components/DashboardHighlight";
 
 export default function Home() {
   const { setShowRules } = useRules();
@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <div id="dashboard" className="col-xxl-10 mx-auto">
-      <div className="hero">
+      <section className="hero">
         <div className="hero-content">
           <h2>75 hard</h2>
           <h1>challenge tracker</h1>
@@ -51,28 +51,66 @@ export default function Home() {
             height={0}
           />
         </div>
-      </div>
-      <div>
+      </section>
+      <section>
         <Carousel />
-      </div>
-      <div className="howTo">
-        <div className="card">
-          <FontAwesomeIcon icon={faChartLine} />
-          <h3>Track Your Progress</h3>
-          <p>Quickly mark your habits completed each day.</p>
-        </div>
-        <div className="card">
-          <FontAwesomeIcon icon={faLock} />
-          <h3>Stay Consistent</h3>
-          <p>Build lasting habits with the power of daily tracking.</p>
-        </div>
-        <div className="card">
-          <FontAwesomeIcon icon={faSeedling} />
-          <h3>See Your Growth</h3>
-          <p>Watch as your consistency builds over time.</p>
-        </div>
-      </div>
-      
+      </section>
+      <section className="howTo">
+        <DashboardCard
+          header={"Track Your Progress"}
+          text={"Quickly mark your habits completed each day."}
+          icon={faChartLine}
+        />
+        <DashboardCard
+          header={"Stay Consistent"}
+          text={"Build lasting habits with the power of daily tracking."}
+          icon={faLock}
+        />
+        <DashboardCard
+          header={"See Your Growth"}
+          text={"Watch as your consistency builds over time."}
+          icon={faSeedling}
+        />
+      </section>
+      <section className="highlights">
+        <DashboardHighlight
+          image={highlight1}
+          alt={"Screenshot of the Rules window"}
+          title={"Explaining the rules"}
+          text={
+            "Take on the 75 Hard Challenge and push your limits! This app helps you stay on track with all five daily tasks — no excuses, no shortcuts. Log your workouts, track your progress, and keep yourself accountable every single day. Think you have what it takes? Start now and challenge yourself to be unstoppable!"
+          }
+        />
+        <DashboardHighlight
+          image={highlight1}
+          alt={"Screenshot of the Rules window"}
+          text={
+            "Adding screenshots of the challenge page with descriptive text is a great idea—it gives potential users a visual preview of how the app works and makes it feel more real."
+          }
+          order={2}
+        />
+        <DashboardHighlight
+          image={highlight1}
+          alt={"Screenshot of the Rules window"}
+          title={"Responsive design"}
+          text={
+            "No matter where you are, your habit tracker is ready for you. Whether you're checking in on a desktop, tablet, or phone, the app automatically adapts to fit your screen. No clunky layouts, no frustrating zooming—just a smooth and simple experience designed to work perfectly on any device. Stay consistent, whether you're at home, at the gym, or on the move!"
+          }
+        />
+      </section>
+      <section className="cta">
+        <h1>
+          Start building better habits today - your future self will be
+          grateful!
+        </h1>
+        <button
+          type="button"
+          className="full-btn big-btn"
+          onClick={goToChallenge}
+        >
+          Get Started
+        </button>
+      </section>
     </div>
   );
 }
