@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Menu } from "./components/Menu";
 import "./globals.css";
 import "@/styles/menu.css";
+import "@/styles/dashboard.css";
 import "@/styles/rules.css";
 import "@/styles/banner.css";
 import "@/styles/dayList.css";
@@ -9,6 +10,7 @@ import "@/styles/daily.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as config from "@/app/utils/config";
 import { ChallengeProvider } from "./utils/contexts/ChallengeContext";
+import { RulesProvider } from "./utils/contexts/RulesContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,8 +32,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ChallengeProvider>
-          <Menu content={children} challengeSize={config.challengeSize} />
-          <div className="py-3 py-md-5 px-3">{children}</div>
+          <RulesProvider>
+            <Menu challengeSize={config.challengeSize} />
+            <div className="py-3 py-md-5 px-3">{children}</div>
+          </RulesProvider>
         </ChallengeProvider>
       </body>
     </html>

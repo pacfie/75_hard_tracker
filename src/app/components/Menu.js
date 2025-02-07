@@ -1,27 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { useEffect } from "react";
-import Rules from "../(pages)/rules/page";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
 import { useChallenge } from "../utils/contexts/ChallengeContext";
+import { useRules } from "../utils/contexts/RulesContext";
 
 export function Menu({ challengeSize }) {
   const [loading, setLoading] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showRules, setShowRules] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
+  const { setShowRules } = useRules();
   const { tickedBoxes, setTickedBoxes } = useChallenge([]);
-
-  function closeRulesWindow() {
-    setIsClosing(true);
-    setTimeout(() => {
-      setShowRules(false);
-      setIsClosing(false);
-    }, 400);
-  }
 
   // set completed days
   useEffect(() => {
@@ -40,22 +28,6 @@ export function Menu({ challengeSize }) {
     }
     setLoading(false);
   }, [setTickedBoxes]);
-
-  // ESC to close Rules
-  useEffect(() => {
-    function handleKeyDown(event) {
-      if (event.key === "Escape" && showRules) {
-        closeRulesWindow();
-      }
-    }
-    // Add event listener
-    document.addEventListener("keydown", handleKeyDown);
-
-    // Clean up event listener on component unmount
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [showRules]);
 
   return (
     <>
@@ -109,13 +81,12 @@ export function Menu({ challengeSize }) {
                 onClick={() => {
                   setMenuOpen(false);
                   setShowRules(true);
-                  setIsClosing(false);
                 }}
               >
                 <span>Rules</span>
               </button>
             </li>
-            <li>
+            {/* <li>
               <Link
                 title="Statistics"
                 href="/statistics"
@@ -123,7 +94,7 @@ export function Menu({ challengeSize }) {
               >
                 <span>Statistics</span>
               </Link>
-            </li>
+            </li> */}
             <li className="inline-profile">
               <Link
                 title="Profile"
@@ -142,23 +113,6 @@ export function Menu({ challengeSize }) {
           <div className="profile"></div>
         </div>
       </div>
-      {/* Conditionally render the Rules window */}
-      {showRules && (
-        <div
-          className={`rules-window ${isClosing ? "isClosing" : ""}`}
-          onClick={closeRulesWindow}
-        >
-          <div
-            className="rules-content position-relative px-4 col-md-10 col-lg-8 col-xl-8 col-xxl-6 mx-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Rules />
-            <button type="button" title="Close" onClick={closeRulesWindow}>
-              <FontAwesomeIcon icon={faXmark} />
-            </button>
-          </div>
-        </div>
-      )}
     </>
   );
 }

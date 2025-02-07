@@ -1,0 +1,141 @@
+:root {
+  --hero-btn-bg-clr: var(--white);
+  --hero-btn-font-clr: var(--yellow);
+  --quotes-clr: rgba(var(--gray-base), 0.5);
+}
+
+#dashboard {
+  display: grid;
+  gap: 5rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  row-gap: 1rem;
+  column-gap: 5rem;
+}
+
+.hero h1 {
+  font-size: 5rem;
+  /* text-transform: capitalize; */
+  line-height: 1;
+}
+
+.hero h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-variant: small-caps;
+  letter-spacing: 3px;
+  font-weight: 300;
+}
+
+.hero-text {
+  margin-top: 1.5rem;
+  margin-bottom: 2.25rem;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%);
+}
+
+.hero button {
+  width: min(15rem, 100%);
+  padding-block: 0.75rem;
+  padding-inline: 1rem;
+  border: 1px solid;
+  border-radius: 25px;
+  background-color: var(--hero-btn-bg-clr);
+  color: var(--hero-btn-font-clr);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hero button.full-btn {
+  border: none;
+  background-color: var(--hero-btn-font-clr);
+  color: var(--hero-btn-bg-clr);
+}
+
+.howTo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+
+  /* background: rgba(32, 163, 158, 0.25);
+  padding: 1rem;
+  border-radius: var(--border-radius); */
+}
+
+.howTo .card {
+  min-width: 20rem;
+  padding: 2rem;
+  border: none;
+  background: var(--white);
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  flex: 1;
+}
+
+.howTo svg {
+  margin-inline: auto;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: var(--green);
+}
+
+@media (max-width: 1000px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .howTo .card {
+    width: 100%;
+  }
+}
+
+.quote-carousel {
+  text-align: center;
+  font-size: 1.5rem;
+  font-style: italic;
+  padding-block: 3rem;
+  margin-block: 4rem;
+  /* background: linear-gradient(90deg, transparent 20%, rgb(232, 241, 247) 50%, transparent 80%); */
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+blockquote::before,
+blockquote::after {
+  position: absolute;
+  font-size: 10rem;
+  line-height: 0;
+  color: var(--quotes-clr);
+}
+
+blockquote::before {
+  content: "“";
+  top: 0;
+  left: -4rem;
+}
+
+blockquote::after {
+  content: "”";
+  bottom: -5.5rem;
+  right: 0rem;
+}
