@@ -25,27 +25,27 @@
 }
 
 /* NAVIGATION */
-.ctnr-menu-items ul {
+.cntr-menu-items ul {
   display: flex;
   gap: 1rem;
   font-weight: 300;
   list-style: none;
 }
 
-.ctnr-menu-items button {
+.cntr-menu-items button {
   border: none;
   background-color: transparent;
   color: inherit;
   font-weight: inherit;
 }
 
-.ctnr-menu-items li:hover button,
-.ctnr-menu-items li:hover {
+.cntr-menu-items li:hover button,
+.cntr-menu-items li:hover {
   font-weight: 600;
 }
 
-.ctnr-menu-items button::before,
-.ctnr-menu-items a::before {
+.cntr-menu-items button::before,
+.cntr-menu-items a::before {
   display: block;
   content: attr(title);
   font-weight: 600;
@@ -71,7 +71,7 @@
 }
 
 /* PROGRESS BAR */
-.loading-ctnr {
+.loading-cntr {
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -101,12 +101,12 @@
   100% { transform: rotate(1turn); }
 }
 
-.ctnr-progress-bar {
+.cntr-progress-bar {
   flex: 1;
   text-align: center;
 }
 
-.ctnr-progress-bar .progress-text {
+.cntr-progress-bar .progress-text {
   display: block;
   font-size: 0.8rem;
   font-weight: 300;
@@ -137,7 +137,7 @@ progress::-webkit-progress-bar {
 }
 
 @media (max-width: 768px) {
-  .ctnr-menu-items {
+  .cntr-menu-items {
     display: grid;
     grid-template-rows: 0fr;
     position: absolute;
@@ -152,36 +152,36 @@ progress::-webkit-progress-bar {
     display: block;
   }
 
-  .ctnr-progress-bar .progress-text {
+  .cntr-progress-bar .progress-text {
     display: none;
   }
 
-  .ctnr-menu-items.show {
+  .cntr-menu-items.show {
     grid-template-rows: 1fr;
     padding-inline: var(--menu-padding-inline);
     background-color: var(--menu-bg-clr);
   }
 
-  .ctnr-menu-items ul {
+  .cntr-menu-items ul {
     flex-direction: column;
     padding: 1rem;
     overflow: hidden;
   }
 
-  .ctnr-menu-items.hide ul {
+  .cntr-menu-items.hide ul {
     padding: 0;
     width: 0;
   }
 
-  .ctnr-menu-items ul li {
+  .cntr-menu-items ul li {
     margin-bottom: 0.5rem;
   }
 
-  .ctnr-menu-items ul li:last-child {
+  .cntr-menu-items ul li:last-child {
     margin-bottom: 0;
   }
 
-  .ctnr-profile {
+  .cntr-profile {
     display: none;
   }
 
@@ -189,41 +189,11 @@ progress::-webkit-progress-bar {
     display: block;
   }
 
-  .ctnr-profile.inline {
+  .cntr-profile.inline {
     display: flex;
     align-items: center;
     gap: 1rem;
   }
-}
-
-.rules-window {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  animation-name: applyBg;
-  animation-duration: var(--animation-duration);
-}
-
-.rules-content {
-  animation-name: slideDown;
-  animation-duration: var(--animation-duration);
-}
-
-.rules-window.isClosing .rules-content {
-  animation-name: slideUp;
-  animation-duration: var(--animation-duration);
-}
-
-.rules-window.isClosing {
-  animation: fadeBg;
-  animation-duration: var(--animation-duration);
 }
 
 .rules-content button {
@@ -248,58 +218,4 @@ progress::-webkit-progress-bar {
 .rules-window.isClosing #rules-box {
   animation: fadeShadow;
   animation-duration: var(--animation-duration);
-}
-
-@keyframes slideDown {
-  from {
-    top: -100%;
-  }
-  to {
-    top: 0;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    top: 0;
-  }
-  to {
-    top: -100%;
-  }
-}
-
-@keyframes fadeBg {
-  from {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-  to {
-    background-color: transparent;
-  }
-}
-
-@keyframes applyBg {
-  from {
-    background-color: transparent;
-  }
-  to {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-}
-
-@keyframes fadeShadow {
-  from {
-    box-shadow: 3px 3px 15px 6px var(--box-shadow-clr);
-  }
-  to {
-    box-shadow: none;
-  }
-}
-
-@keyframes applyShadow {
-  from {
-    box-shadow: none;
-  }
-  to {
-    box-shadow: 3px 3px 15px 6px var(--box-shadow-clr);
-  }
 }

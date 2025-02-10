@@ -1,0 +1,129 @@
+:root {
+  --window-bg-clr: var(--white);
+}
+
+.window {
+  border: 1px solid;
+  border-radius: var(--border-radius);
+  background-color: var(--window-bg-clr);
+  box-shadow: 3px 3px 15px 6px var(--box-shadow-clr);
+  animation: applyShadow;
+  animation-duration: var(--animation-duration);
+}
+
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+  border-bottom: 1px solid rgba(var(--gray-base), 0.5);
+  font-size: 1.25rem;
+}
+
+.window-header button {
+  border: none;
+  background: none;
+}
+
+.window-body {
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+}
+
+.window-footer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+}
+
+.window-cntr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  animation-name: applyBg;
+  animation-duration: var(--animation-duration);
+}
+
+.window-content {
+  animation-name: slideDown;
+  animation-duration: var(--animation-duration);
+}
+
+.window-cntr.isClosing .window-content {
+  animation-name: slideUp;
+  animation-duration: var(--animation-duration);
+}
+
+.window-cntr.isClosing {
+  animation: fadeBg;
+  animation-duration: var(--animation-duration);
+}
+
+.window-cntr.isClosing .window {
+  animation: fadeShadow;
+  animation-duration: var(--animation-duration);
+}
+
+@keyframes slideDown {
+    from {
+      top: -100%;
+    }
+    to {
+      top: 0;
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      top: 0;
+    }
+    to {
+      top: -100%;
+    }
+  }
+  
+  @keyframes fadeBg {
+    from {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    to {
+      background-color: transparent;
+    }
+  }
+  
+  @keyframes applyBg {
+    from {
+      background-color: transparent;
+    }
+    to {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  }
+  
+  @keyframes fadeShadow {
+    from {
+      box-shadow: 3px 3px 15px 6px var(--box-shadow-clr);
+    }
+    to {
+      box-shadow: none;
+    }
+  }
+  
+  @keyframes applyShadow {
+    from {
+      box-shadow: none;
+    }
+    to {
+      box-shadow: 3px 3px 15px 6px var(--box-shadow-clr);
+    }
+  }

@@ -45,19 +45,11 @@
 
 #dashboard button {
   width: min(15rem, 100%);
-  padding-block: 0.75rem;
-  padding-inline: 1rem;
-  border: 1px solid;
-  border-radius: 25px;
   background-color: var(--hero-btn-bg-clr);
   color: var(--hero-btn-font-clr);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  white-space: nowrap;
 }
 
 #dashboard button.full-btn {
-  border: none;
   background-color: var(--hero-btn-font-clr);
   color: var(--hero-btn-bg-clr);
 }

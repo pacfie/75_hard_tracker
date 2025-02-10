@@ -1,10 +1,13 @@
 import BannerDate from "./BannerDate"
 import BannerCounter from "./BannerCounter"
 import * as DayUtil from "@/app/utils/DayUtil"
+import { useChallenge } from "@/app/utils/contexts/ChallengeContext";
 
-export default function Banner({classes, challengeSize, d }){
-    const dEnd = DayUtil.addDays(d, challengeSize)
-    let startDate = d.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' });
+export default function Banner({classes}){
+    const { startingDate, challengeSize} = useChallenge();
+    
+    const dEnd = DayUtil.addDays(startingDate, challengeSize)
+    let startDate = startingDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' });
     let endDate = dEnd.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' });
 
     function getRemainingDays(){

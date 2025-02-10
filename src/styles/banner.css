@@ -35,6 +35,19 @@
   line-height: 1;
 }
 
+.banner-counter .finished-text {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  background: var(--banner-counter-bg-clr);
+  padding-inline: 1rem;
+  border-radius: 5px;
+  padding-block: 0.5rem;
+  font-weight: 500;
+}
+
+.banner-counter:has(.finished-text) {
+  background: none;
+}
 
 @media (max-width: 300px) {
   #banner .banner-date {

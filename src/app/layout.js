@@ -3,11 +3,13 @@ import { Menu } from "./components/Menu";
 import "./globals.css";
 import "@/styles/menu.css";
 import "@/styles/footer.css";
+import "@/styles/window.css";
 import "@/styles/dashboard.css";
 import "@/styles/rules.css";
 import "@/styles/banner.css";
 import "@/styles/dayList.css";
 import "@/styles/daily.css";
+import "@/styles/newChallenge.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as config from "@/app/utils/config";
 import { ChallengeProvider } from "./utils/contexts/ChallengeContext";
@@ -35,7 +37,7 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ChallengeProvider>
           <RulesProvider>
-            <Menu challengeSize={config.challengeSize} />
+            <Menu />
             <div className="py-3 py-md-5 px-3">{children}</div>
           </RulesProvider>
         </ChallengeProvider>

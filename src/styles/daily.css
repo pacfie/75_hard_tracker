@@ -10,6 +10,7 @@
 #daily-data {
   height: fit-content;
   padding: 1.5rem;
+  margin-bottom: 5rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   background: var(--white);

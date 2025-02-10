@@ -38,7 +38,7 @@ export const addDays = (date, number) => {
 
 export const daysBetween = (date1, date2) => {
   const oneDay = 1000 * 60 * 60 * 24;
-  const diffInTime = Math.abs(new Date(date2) - new Date(date1));
+  const diffInTime = new Date(date1) - new Date(date2);
   return Math.floor(diffInTime / oneDay);
 }
 

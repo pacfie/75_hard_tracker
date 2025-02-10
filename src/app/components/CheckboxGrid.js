@@ -1,30 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DayBlock from "./DayBlock";
 import * as DayUtil from "@/app/utils/DayUtil";
+import { useChallenge } from "@/app/utils/contexts/ChallengeContext";
 
 export default function CheckboxGrid({
-  onDaySelect,
-  challengeSize,
-  tickedBoxes,
-  startDate,
+  onDaySelect
 }) {
   const [selectedDayNumber, setSelectedDayNumber] = useState(null);
+  const [dayStates, setDayStates] = useState([]);
+  const { startingDate, challengeSize, tickedBoxes} = useChallenge();
+
+  useEffect(() => {
+    setDayStates(
+      [...Array(challengeSize).keys()].map((_, index) => {
+        const dayNumber = index + 1;
+        if (tickedBoxes.includes(dayNumber)) return "completed";
+        return DayUtil.isBeforeToday(DayUtil.addDays(startingDate, dayNumber))
+          ? "failed"
+          : "";
+      })
+    );
+  }, [startingDate, challengeSize, tickedBoxes]);
 
   function handleDaySelection(day) {
     setSelectedDayNumber(day);
     onDaySelect(day);
   }
-
-  function getDayState(dayNumber) {
-    return tickedBoxes && tickedBoxes.includes(dayNumber)
-      ? "completed"
-      : DayUtil.isBeforeToday(DayUtil.addDays(startDate, dayNumber))
-      ? "failed"
-      : "";
-  }
-
+  
   function isSelected(dayNumber) {
     return selectedDayNumber && selectedDayNumber === dayNumber
       ? "selected-day"
@@ -38,8 +42,8 @@ export default function CheckboxGrid({
           key={key}
           number={index + 1}
           onDayClick={handleDaySelection}
-          classes={`${isSelected(index + 1)} ${getDayState(index + 1)}`}
-          isOpen={DayUtil.isBeforeToday(DayUtil.addDays(startDate, index))}
+          classes={`${isSelected(index + 1)} ${dayStates[index] || ""}`}
+          isOpen={DayUtil.isBeforeToday(DayUtil.addDays(startingDate, index))}
         />
       ))}
     </div>

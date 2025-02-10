@@ -1,24 +1,23 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import Rules from "./Rules";
 import { useState, useEffect } from "react";
+import Window from "./Window";
 
-export default function RulesContainer({ setShowRules }) {
+export default function WindowContainer({ setShowWindow, title, content, footer, onClose }) {
   const [isClosing, setIsClosing] = useState(false);
 
-  function closeRulesWindow() {
+  function closeWindow() {
     setIsClosing(true);
     setTimeout(() => {
-      setShowRules(false);
+      setShowWindow(false);
       setIsClosing(false);
+      onClose && onClose();
     }, 400);
   }
 
-  // ESC to close Rules
+  // ESC to close the window
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.key === "Escape") {
-        closeRulesWindow();
+        closeWindow();
       }
     }
     // Add event listener
@@ -33,16 +32,13 @@ export default function RulesContainer({ setShowRules }) {
   return (
     <div
       className={`window-cntr ${isClosing ? "isClosing" : ""}`}
-      onClick={closeRulesWindow}
+      onClick={closeWindow}
     >
       <div
-        className="window-content rules-content position-relative px-4 col-md-10 col-lg-8 col-xl-8 col-xxl-6 mx-auto"
+        className="window-content position-relative px-4 col-md-10 col-lg-8 col-xl-8 col-xxl-6 mx-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <Rules />
-        <button type="button" title="Close" onClick={closeRulesWindow}>
-          <FontAwesomeIcon icon={faXmark} />
-        </button>
+        <Window title={title} content={content} footer={footer} onClose={closeWindow} />
       </div>
     </div>
   );

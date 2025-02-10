@@ -58,6 +58,8 @@ export default function DailyData({ day, onTickedBoxesChange }) {
       const storedData = localStorage.getItem("challengeData") || "[]";
       let challengeData = JSON.parse(storedData);
 
+      console.log(challengeData);
+
       challengeData[dayData.number - 1] = dayData;
 
       localStorage.setItem("challengeData", JSON.stringify(challengeData));
@@ -109,7 +111,7 @@ export default function DailyData({ day, onTickedBoxesChange }) {
 
   return (
     <div id="daily-data">
-      <div className="mb-5">
+      <div>
         <h1>Day {dayData.number}</h1>
         <div
           className="d-flex justify-content-center gap-2 flex-wrap py-2"

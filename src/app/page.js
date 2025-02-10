@@ -35,15 +35,23 @@ export default function Home() {
             version of yourself.
           </p>
           <div className="d-flex gap-4 flex-wrap">
-            <button type="button" className="full-btn" onClick={goToChallenge}>
+            <button
+              type="button"
+              className="ellipse-btn full-btn"
+              onClick={goToChallenge}
+            >
               Go to challenge
             </button>
-            <button type="button" onClick={() => setShowRules(true)}>
+            <button
+              type="button"
+              className="ellipse-btn"
+              onClick={() => setShowRules(true)}
+            >
               Check rules
             </button>
           </div>
         </div>
-        <div className="hero-img mx-auto" style={{ maxWidth: "30rem" }}>
+        <div className="hero-img mx-auto w-100" style={{ maxWidth: "30rem" }}>
           <Image
             src={rockyPhoto}
             alt="Photo of Rocky Balboa raising his fist in the sky"
@@ -92,10 +100,18 @@ export default function Home() {
         <DashboardHighlight
           image={highlight1}
           alt={"Screenshot of the Rules window"}
+          text={
+            "The 75 Hard Challenge is designed to build discipline and mental toughness over 75 days—but we know that everyone’s journey is different. Whether you commit to the full challenge or set a shorter goal, this app lets you customize your experience while still pushing yourself to grow. Choose the duration that works for you and stay consistent!"
+          }
+        />
+        <DashboardHighlight
+          image={highlight1}
+          alt={"Screenshot of the Rules window"}
           title={"Responsive design"}
           text={
             "No matter where you are, your habit tracker is ready for you. Whether you're checking in on a desktop, tablet, or phone, the app automatically adapts to fit your screen. No clunky layouts, no frustrating zooming—just a smooth and simple experience designed to work perfectly on any device. Stay consistent, whether you're at home, at the gym, or on the move!"
           }
+          order={2}
         />
       </section>
       <section className="cta">
@@ -105,7 +121,7 @@ export default function Home() {
         </h1>
         <button
           type="button"
-          className="full-btn big-btn"
+          className="ellipse-btn full-btn big-btn"
           onClick={goToChallenge}
         >
           Get Started

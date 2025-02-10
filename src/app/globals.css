@@ -89,6 +89,20 @@ h1,h2,h3,h4,h5,h6 {
   font-family: var(--font-head);
 }
 
+.ellipse-btn {
+  padding-block: 0.75em;
+  padding-inline: 1em;
+  border: 1px solid;
+  border-radius: 2em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.full-btn {
+  border: none;
+}
+
 /* BOOSTRAP OVERRIDE */
 body ul {
   margin: 0;
