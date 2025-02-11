@@ -1,9 +1,3 @@
-:root {
-  --hero-btn-bg-clr: var(--white);
-  --hero-btn-font-clr: var(--yellow);
-  --quotes-clr: rgba(var(--gray-base), 0.5);
-}
-
 #dashboard {
   display: grid;
   gap: 5rem;
@@ -19,7 +13,6 @@
 
 .hero h1 {
   font-size: 5rem;
-  /* text-transform: capitalize; */
   line-height: 1;
 }
 
@@ -36,22 +29,15 @@
   margin-bottom: 2.25rem;
 }
 
+.hero button {
+  width: min(15rem, 100%);
+}
+
 .hero img {
   width: 100%;
   height: auto;
   border-radius: var(--border-radius);
   mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%);
-}
-
-#dashboard button {
-  width: min(15rem, 100%);
-  background-color: var(--hero-btn-bg-clr);
-  color: var(--hero-btn-font-clr);
-}
-
-#dashboard button.full-btn {
-  background-color: var(--hero-btn-font-clr);
-  color: var(--hero-btn-bg-clr);
 }
 
 /* CAROUSEL */
@@ -61,7 +47,6 @@
   font-style: italic;
   padding-block: 3rem;
   margin-block: 4rem;
-  /* background: linear-gradient(90deg, transparent 20%, rgb(232, 241, 247) 50%, transparent 80%); */
 }
 
 .fade-in {
@@ -78,7 +63,7 @@ blockquote::after {
   position: absolute;
   font-size: 10rem;
   line-height: 0;
-  color: var(--quotes-clr);
+  color: var(--clr-neutral-700);
 }
 
 blockquote::before {
@@ -105,9 +90,10 @@ blockquote::after {
   min-width: 20rem;
   padding: 2rem;
   border: none;
-  background: var(--white);
-  text-align: center;
+  background-color: var(--card-bg-clr);
   box-shadow: var(--box-shadow);
+  color: var(--foreground);
+  text-align: center;
   flex: 1;
 }
 
@@ -115,7 +101,7 @@ blockquote::after {
   margin-inline: auto;
   margin-bottom: 1rem;
   font-size: 2rem;
-  color: var(--green);
+  color: var(--clr-primary);
 }
 
 /* CTA */
@@ -142,7 +128,6 @@ blockquote::after {
 .highlight {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  /* column-gap: 3rem; */
   row-gap: 2rem;
   align-items: center;
   justify-items: center;
@@ -151,7 +136,7 @@ blockquote::after {
 .highlight span {
   display: block;
   margin-bottom: 0.5rem;
-  color: var(--green);
+  color: var(--clr-primary);
   font-weight: 500;
   letter-spacing: 2px;
   font-size: 1.25rem;
@@ -165,9 +150,9 @@ blockquote::after {
 }
 
 .highlight img {
-  width: min(100%, 25rem);
+  width: min(100%, 20rem);
   height: auto;
-  box-shadow: 20px 20px 0px 0px var(--green);
+  box-shadow: 20px 20px 0px 0px var(--highlight-shadow-clr);
   border-radius: var(--border-radius);
 }
 

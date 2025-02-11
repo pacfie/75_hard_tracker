@@ -116,7 +116,6 @@ export default function DailyData({ day, onTickedBoxesChange }) {
         <div
           className="d-flex justify-content-center gap-2 flex-wrap py-2"
           style={{
-            backgroundColor: "aliceblue",
             borderRadius: "var(--border-radius)",
           }}
         >

@@ -1,29 +1,49 @@
 :root {
-  --white-base: 255, 255, 255;
-  --white: rgba(var(--white-base), 1);
-  --dark-base: 45, 43, 45;
-  --dark: rgba(var(--dark-base), 1);
-  --gray-base: 120, 120, 120;
-  --gray: rgba(var(--gray-base), 1);
-  /* Color #1 - green */
-  --green-base: 32, 163, 158;
-  --green: rgba(var(--green-base), 1);
-  /* Color #2 - red */
-  --red-base: 255, 75, 62;
-  --red: rgba(var(--red-base), 1);
-  /* Color #3 - yellow */
-  --yellow-base: 255, 178, 15;
-  --yellow: rgba(var(--yellow-base), 1);
-
-  --border-radius: 10px;
-  --box-shadow: 1px 1px 6px -2px #999797;
-
-  --font-head: Outfit;
-  --font-text: Roboto;
-
-  --background: rgba(var(--green-base), 0.05);
-  --background: var(--white);
-  --foreground: var(--dark);
+  /* COLORS */
+	--clr-primary-50: #e0f2f0;
+	--clr-primary-100: #b1e0d9;
+	--clr-primary-200: #7fccc1;
+	--clr-primary-300: #4ab8a8;
+	--clr-primary-400: #1ea896;	
+	--clr-primary-500: #009884;
+	--clr-primary-600: #008b77;
+	--clr-primary-700: #007b67;
+	--clr-primary-800: #006b58;
+	--clr-primary-900: #004f3d;
+	--clr-secondary-50: #f9eae9;
+	--clr-secondary-100: #fdcdc3;
+	--clr-secondary-200: #fdac9d;
+	--clr-secondary-300: #fe8b77;
+	--clr-secondary-400: #ff715b;
+	--clr-secondary-500: #ff5742;
+	--clr-secondary-600: #f5513e;
+	--clr-secondary-700: #e74b38;
+	--clr-secondary-800: #d84534;
+	--clr-secondary-900: #be392b;
+  --clr-accent-50: #fff8e0;
+	--clr-accent-100: #ffebb0;
+	--clr-accent-200: #ffdf7d;
+	--clr-accent-300: #ffd346;
+	--clr-accent-400: #ffc814;
+	--clr-accent-500: #ffbf00;
+	--clr-accent-600: #ffb100;
+	--clr-accent-700: #ff9d00;
+	--clr-accent-800: #ff8c00;
+	--clr-accent-900: #ff6a00;
+  --clr-neutral-50: #ffffff;
+	--clr-neutral: var(--clr-neutral-50);
+  --white: var(--clr-neutral);
+	--clr-neutral-100: #fafafa;
+	--clr-neutral-200: #f5f5f5;
+	--clr-neutral-300: #f0f0f0;
+	--clr-neutral-400: #dedede;
+	--clr-neutral-500: #c2c2c2;
+	--clr-neutral-600: #979797;
+	--clr-neutral-700: #818181;
+	--clr-neutral-800: #606060;
+	--clr-neutral-900: #3c3c3c;
+  --dark: var(--clr-neutral-900);
+  --clr-neutral-1000: #2d2d2d;
 }
 
 @font-face {
@@ -35,6 +55,70 @@
   font-family: Roboto;
   src: url(../fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf);
 }
+
+/* GENERAL */
+:root {
+  --font-head: Outfit;
+  --font-text: Roboto;
+  --border-radius: 10px;
+  --box-shadow: 1px 1px 6px -2px var(--clr-neutral-600);
+  --error-clr: red;
+}
+
+/* LIGHT-DARK COLORS */
+:root {
+  --background: var(--white);
+  --foreground: var(--dark);
+
+  --clr-primary: var(--clr-primary-400);
+	--clr-secondary: var(--clr-secondary-400);  
+	--clr-accent: var(--clr-accent-500);
+
+  --box-shadow-clr: var(--clr-neutral-900);
+  --secondary-text-clr: var(--clr-neutral-700);
+
+  --menu-bg-clr: var(--clr-primary);
+  --hero-btn-font-clr: var(--clr-secondary);
+  --card-bg-clr: var(--white);
+  --highlight-shadow-clr: var(--clr-primary);
+  --banner-bg-clr: var(--white);
+  --grid-bg-clr: var(--clr-neutral-200);
+  --completed-bg-clr: var(--clr-primary);
+  --failed-bg-clr: var(--clr-secondary-300);
+  --selected-day-bg-clr: var(--clr-accent);
+  --daily-data-bg-clr: var(--white);
+
+  --footer-bg-clr: var(--clr-neutral-300);
+  --footer-font-clr: var(--clr-neutral-700);
+}
+
+body.dark {
+  --background: var(--clr-neutral-900);
+  --foreground: var(--clr-neutral-200);
+
+  --clr-primary: var(--clr-primary-300);
+  --clr-primary-dark: var(--clr-primary-700);
+  --clr-secondary: var(--clr-secondary-900);
+  --clr-accent: var(--clr-accent-800);
+
+  --box-shadow-clr: transparent;
+  --secondary-text-clr: var(--clr-neutral-500);
+
+  --menu-bg-clr: var(--clr-neutral-1000);
+  --hero-btn-font-clr: var(--white);
+  --card-bg-clr: var(--clr-neutral-800);
+  --highlight-shadow-clr: var(--clr-primary-dark);
+  --banner-bg-clr: var(--clr-neutral-700);
+  --grid-bg-clr: var(--clr-neutral-800);
+  --completed-bg-clr: var(--clr-primary-dark);
+  --failed-bg-clr: var(--clr-secondary-900);
+  --selected-day-bg-clr: var(--clr-accent);
+  --daily-data-bg-clr: var(--clr-neutral-800);
+
+  --footer-bg-clr: var(--clr-neutral-1000);
+  --footer-font-clr: var(--clr-neutral-500);
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -51,8 +135,8 @@ body {
 
 body {
   position: relative;
-  min-height: 100vh;
-  color: var(--foreground);
+  min-height: 100dvh;
+  color: var(--foreground) !important;
   background-color: var(--background) !important;
   font-family: var(--font-text), sans-serif !important;
   -webkit-font-smoothing: antialiased;
@@ -60,16 +144,34 @@ body {
 }
 
 @media (min-width: 1000px) {
-  body::before {    
+  body::before,
+  body::after {
     content: "";
-    background:
-    url('../images/pushup.png') no-repeat left bottom / 25%, 
-    url('../images/pullup.png') no-repeat right bottom 50% / 15rem;
-    background-attachment: fixed;
     position: absolute;
     z-index: -1;
     inset: 0;
+  }
+
+  body::before {
+    background:url('../images/pushup.png') no-repeat left bottom / 25%;
+    background-attachment: fixed;
+    opacity: 0.2;
+  }
+
+  body::after {
+    background: url('../images/pullup.png') no-repeat right bottom 50% / 15rem;
+    background-attachment: fixed;
     opacity: 0.1;
+  }
+
+  body.dark::before{
+    opacity: 1;
+    filter: brightness(2);
+  }
+
+  body.dark::after{
+    opacity: 1;
+    filter: invert(0.4);
   }
 }
 
@@ -89,9 +191,10 @@ h1,h2,h3,h4,h5,h6 {
   font-family: var(--font-head);
 }
 
+/* BUTTONS */
 .ellipse-btn {
   padding-block: 0.75em;
-  padding-inline: 1em;
+  padding-inline: 2em;
   border: 1px solid;
   border-radius: 2em;
   letter-spacing: 2px;
@@ -99,8 +202,29 @@ h1,h2,h3,h4,h5,h6 {
   white-space: nowrap;
 }
 
-.full-btn {
+.ellipse-btn.full-btn {
   border: none;
+  background-color: var(--clr-secondary);
+  color: var(--white);
+}
+
+.ellipse-btn.full-btn:hover {
+  background-color: var(--clr-secondary-700);
+}
+
+.ellipse-btn.inverted-btn{
+  background-color: transparent;
+  color: var(--hero-btn-font-clr);
+}
+
+.ellipse-btn.inverted-btn:hover {
+  background-color: var(--secondary-text-clr);
+  color: var(--white);
+}
+
+.dark .ellipse-btn.inverted-btn:hover {
+  background-color: var(--clr-neutral-600);
+  color: var(--white);
 }
 
 /* BOOSTRAP OVERRIDE */
@@ -116,4 +240,13 @@ body a {
 
 body p {
   margin: 0;
+}
+
+body .form-control {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body.dark .form-control {
+  background: var(--clr-neutral-700);
 }

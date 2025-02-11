@@ -1,8 +1,3 @@
-:root {
-  --day-bg-clr: aliceblue;
-  --selected-day-bg-clr: var(--yellow);
-}
-
 #day-list-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
@@ -12,7 +7,7 @@
   height: fit-content;
   padding: 1.25rem;
   border-radius: var(--border-radius);
-  background-color: var(--white);
+  background-color: var(--grid-bg-clr);
   box-shadow: var(--box-shadow);
   justify-items: center;
 }
@@ -24,24 +19,25 @@
   aspect-ratio: 1;
   border: none;
   border-radius: 5px;
-  background-color: var(--day-bg-clr);
-  box-shadow: 2px 2px 2px -1px #aaa;
+  background-color: var(--background);
+  box-shadow: 2px 2px 2px -1px var(--box-shadow-clr);
+  color: var(--secondary-text-clr);
   font-family: Outfit;
   transition: scale 0.3s, box-shadow 0.3s;
 }
 
 .day-block:not(button:disabled):hover {
   scale: 1.2;
-  box-shadow: 2px 2px 2px 1px #aaa;
+  box-shadow: 2px 2px 2px 1px var(--box-shadow-clr);
 }
 
 .day-block.completed {
-  background-color: var(--green);
+  background-color: var(--completed-bg-clr);
   color: var(--white);
 }
 
 .day-block.failed {
-  background-color: var(--red);
+  background-color: var(--failed-bg-clr);
   color: var(--white);
 }
 

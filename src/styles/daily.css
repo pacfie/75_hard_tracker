@@ -1,10 +1,5 @@
 :root {
-  --complete-btn-font-clr: var(--yellow);
-  --complete-btn-bg-clr: var(--white);
-  --day-placeholder-font-clr: #888787;
-  --checkbox-checked-bg-clr: var(--red);
-  --checkbox-width-small: 1.5rem;
-  --checkbox-width-big: 2.5rem;
+  --checkbox-checked-bg-clr: var(--clr-primary);
 }
 
 #daily-data {
@@ -13,62 +8,12 @@
   margin-bottom: 5rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  background: var(--white);
+  background: var(--daily-data-bg-clr);
 }
 
 #daily-data svg {
   width: 2rem;
   aspect-ratio: 1;
-}
-
-.daily-todo-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-block: 0.5rem;
-  padding-inline: 1rem;
-  background-color: rgba(var(--green-base), 0.2);
-  font-family: var(--font-head);
-  font-size: 1.25rem;
-}
-
-#daily-data section:first-of-type .daily-todo-header {
-  border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
-}
-
-.daily-todo-content {
-  width: 100%;
-}
-
-.daily-todo-content textarea {
-  border-radius: var(--border-radius);
-}
-
-.complete-btn-cntr {
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-  background-color: var(--white);
-  padding-block: 1.5rem;
-}
-
-.complete-btn-cntr button {
-  padding-block: 0.5rem;
-  padding-inline: 1.5rem;
-  border: 3px solid var(--complete-btn-font-clr);
-  border-radius: 20px;
-  background-color: var(--complete-btn-bg-clr);
-  color: var(--complete-btn-font-clr);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 600;
-  font-family: var(--font-head);
-  font-size: 1.25rem;
-}
-
-.complete-btn-cntr button:hover {
-  background-color: var(--complete-btn-font-clr);
-  color: var(--complete-btn-bg-clr);
 }
 
 /* CHECKBOXES */
@@ -88,14 +33,9 @@
   cursor: pointer;
 }
 
-.custom-checkbox .form-check-input.small {
-  width: var(--checkbox-width-small);
-  height: var(--checkbox-width-small);
-}
-
-.custom-checkbox .form-check-input.big {
-  width: var(--checkbox-width-big);
-  height: var(--checkbox-width-big);
+.custom-checkbox .form-check-input {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .custom-checkbox .form-check-input:checked {
@@ -109,7 +49,7 @@
 }
 
 .custom-checkbox:not(.selected-checkbox):has(.form-check-input:focus-visible){
-  background-color: rgba(var(--yellow-base), 0.2);
+  background-color: var(--clr-secondary-100);
 }
 
 /* PLACEHOLDER */
@@ -125,5 +65,5 @@
   font-size: 1.5rem;
   font-weight: 300;
   letter-spacing: 1px;
-  color: var(--day-placeholder-font-clr);
+  color: var(--secondary-text-clr);
 }

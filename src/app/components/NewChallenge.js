@@ -19,7 +19,7 @@ export default function NewChallenge({ onYes, onNo }) {
           >
             Yes, start fresh
           </button>
-          <button type="button" className="ellipse-btn no-btn" onClick={onNo}>
+          <button type="button" className="ellipse-btn inverted-btn no-btn" onClick={onNo}>
             No, keep my progress
           </button>
         </>

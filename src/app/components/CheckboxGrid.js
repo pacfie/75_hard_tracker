@@ -43,6 +43,7 @@ export default function CheckboxGrid({
           number={index + 1}
           onDayClick={handleDaySelection}
           classes={`${isSelected(index + 1)} ${dayStates[index] || ""}`}
+          completed={dayStates[index] == "completed"}
           isOpen={DayUtil.isBeforeToday(DayUtil.addDays(startingDate, index))}
         />
       ))}

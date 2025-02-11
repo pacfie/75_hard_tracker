@@ -6,7 +6,7 @@ export default function Window({title, content, footer, onClose}){
     <div className="window">
       <div className="window-header">
         <span>{title}</span>
-        <button type="button" title="Close" onClick={onClose}>
+        <button type="button" title="Close" onClick={onClose} style={{color: "var(--foreground)"}}>
           <FontAwesomeIcon icon={faXmark} />
         </button>
       </div>

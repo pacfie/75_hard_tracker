@@ -44,7 +44,7 @@ export default function Home() {
             </button>
             <button
               type="button"
-              className="ellipse-btn"
+              className="ellipse-btn inverted-btn"
               onClick={() => setShowRules(true)}
             >
               Check rules

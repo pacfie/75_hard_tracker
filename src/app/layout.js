@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
         <ChallengeProvider>
           <RulesProvider>
             <Menu />
-            <div className="py-3 py-md-5 px-3">{children}</div>
+            <div className="p-5">{children}</div>
           </RulesProvider>
         </ChallengeProvider>
         <Footer/>

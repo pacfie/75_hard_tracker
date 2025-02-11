@@ -1,18 +1,11 @@
-:root {
-  --banner-bg-clr: var(--white);
-  --banner-font-clr: var(--dark);
-  --banner-counter-bg-clr: var(--yellow);
-  --banner-border-width: 1px;
-}
-
 #banner {
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 0.5rem;
   border-radius: var(--border-radius);
-  background-color: var(--banner-counter-bg-clr);
-  color: var(--banner-bg-clr);  
+  background-color: var(--clr-accent);
+  color: var(--white);
   box-shadow: var(--box-shadow);
 }
 
@@ -25,6 +18,7 @@
 .banner-counter {
   padding: 0.5rem;
   text-align: center;
+  color: var(--white);
 }
 
 .banner-counter .remaining-days {
@@ -38,7 +32,7 @@
 .banner-counter .finished-text {
   text-transform: uppercase;
   letter-spacing: 4px;
-  background: var(--banner-counter-bg-clr);
+  background: var(--clr-accent);
   padding-inline: 1rem;
   border-radius: 5px;
   padding-block: 0.5rem;
@@ -57,9 +51,8 @@
 
 @media (min-width: 769px) {
   #banner {
-    /* border: var(--banner-border-width) solid var(--banner-font-clr); */
     background-color: var(--banner-bg-clr);
-    color: var(--banner-font-clr);
+    color: var(--foreground);
   }
   .banner-counter {
     display: grid;
@@ -68,9 +61,7 @@
     position: absolute;
     width: 7rem;
     aspect-ratio: 1;
-    /* border: var(--banner-border-width) solid var(--banner-font-clr); */
     border-radius: 50%;
-    background-color: var(--banner-counter-bg-clr);
-    color: var(--banner-bg-clr);
+    background-color: var(--clr-accent);
   }
 }

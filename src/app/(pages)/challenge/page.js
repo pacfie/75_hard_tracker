@@ -11,7 +11,13 @@ import WindowContainer from "@/app/components/WindowContainer";
 
 export default function Challenge() {
   const [selectedDay, setSelectedDay] = useState(null);
-  const { startingDate, setStartingDate, challengeSize, setChallengeSize, setTickedBoxes } = useChallenge();
+  const {
+    startingDate,
+    setStartingDate,
+    challengeSize,
+    setChallengeSize,
+    setTickedBoxes,
+  } = useChallenge();
   const [days, setDays] = useState([]);
   const [newChallenge, setNewChallenge] = useState(false);
   const [newChallengeForm, setNewChallengeForm] = useState(false);
@@ -156,7 +162,7 @@ export default function Challenge() {
 
       <button
         type="button"
-        className="ellipse-btn new-challenge-btn"
+        className="ellipse-btn inverted-btn new-challenge-btn"
         onClick={() => setNewChallenge(true)}
       >
         New challenge
@@ -175,7 +181,7 @@ export default function Challenge() {
             <>
               <button
                 type="button"
-                className="ellipse-btn full-btn yes-btn"
+                className="ellipse-btn full-btn"
                 onClick={() => {
                   setNewChallenge(false);
                   setNewChallengeForm(true);
@@ -185,7 +191,7 @@ export default function Challenge() {
               </button>
               <button
                 type="button"
-                className="ellipse-btn no-btn"
+                className="ellipse-btn inverted-btn"
                 onClick={() => {
                   setNewChallenge(false);
                 }}
@@ -202,25 +208,25 @@ export default function Challenge() {
           title={"Start new challenge"}
           content={
             <form id="new-challenge-form" onSubmit={startNewChallenge}>
-              <div className="d-flex gap-3 flex-wrap justify-content-evenly my-4">
-                <div style={{ width: "min(100%, 12rem)" }}>
+              <div
+                className="d-grid gap-5 mb-3 text-center"
+              >
+                <div>
                   <label className="form-label" htmlFor="challenge-size">
-                    Challenge size (10-75)
+                    Challenge length
                   </label>
-                  <div className="d-flex align-items-center gap-2">
-                    <input
-                      ref={challengeSizeRef}
-                      type="number"
-                      name="challenge-size"
-                      min="10"
-                      max="75"
-                      defaultValue={75}
-                      className="form-control form-control-sm"
-                    ></input>
-                    <span>days</span>
-                  </div>
+                  <input
+                    ref={challengeSizeRef}
+                    type="number"
+                    name="challenge-size"
+                    min="10"
+                    max="75"
+                    defaultValue={75}
+                    className="form-control form-control-sm"
+                  ></input>
+                  <p className="info-text">* must be between 10 and 75 days</p>
                 </div>
-                <div style={{ width: "min(100%, 12rem)" }}>
+                <div>
                   <label className="form-label" htmlFor="starting-date">
                     Starting date
                   </label>
@@ -230,17 +236,17 @@ export default function Challenge() {
                     name="starting-date"
                     className="form-control form-control-sm"
                   ></input>
+                  {validationErrors.size && (
+                    <span className="validation-msg">
+                      {validationErrors.size}
+                    </span>
+                  )}
+                  {validationErrors.date && (
+                    <span className="validation-msg">
+                      {validationErrors.date}
+                    </span>
+                  )}
                 </div>
-                {validationErrors.size && (
-                  <span className="validation-msg">
-                    {validationErrors.size}
-                  </span>
-                )}
-                {validationErrors.date && (
-                  <span className="validation-msg">
-                    {validationErrors.date}
-                  </span>
-                )}
               </div>
             </form>
           }
@@ -248,9 +254,9 @@ export default function Challenge() {
             <button
               type="submit"
               form="new-challenge-form"
-              className="ellipse-btn full-btn mx-auto start-btn"
+              className="ellipse-btn full-btn mx-auto"
             >
-              Start new challenge
+              {`Let's go`}
             </button>
           }
           setShowWindow={setNewChallengeForm}

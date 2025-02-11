@@ -86,23 +86,8 @@ export function Menu() {
                 <span>Rules</span>
               </button>
             </li>
-            <li className="inline-profile">
-              <Link
-                title="Profile"
-                href="/profile"
-                onClick={() => setMenuOpen(false)}
-              >
-                <div className="cntr-profile inline">
-                  <div className="profile"></div>
-                  <span>Profile</span>
-                </div>
-              </Link>
-            </li>
           </ul>
         </nav>
-        <div className="cntr-profile">
-          <div className="profile"></div>
-        </div>
       </div>
     </>
   );

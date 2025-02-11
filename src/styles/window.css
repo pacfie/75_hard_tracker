@@ -1,11 +1,7 @@
-:root {
-  --window-bg-clr: var(--white);
-}
-
 .window {
   border: 1px solid;
   border-radius: var(--border-radius);
-  background-color: var(--window-bg-clr);
+  background-color: var(--background);
   box-shadow: 3px 3px 15px 6px var(--box-shadow-clr);
   animation: applyShadow;
   animation-duration: var(--animation-duration);
@@ -17,7 +13,7 @@
   align-items: center;
   padding-block: 1rem;
   padding-inline: 1.5rem;
-  border-bottom: 1px solid rgba(var(--gray-base), 0.5);
+  border-bottom: 1px solid var(--clr-neutral-700);
   font-size: 1.25rem;
 }
 
@@ -37,6 +33,10 @@
   flex-wrap: wrap;
   padding-block: 1rem;
   padding-inline: 1.5rem;
+}
+
+.window-footer button {
+  font-size: 0.8rem;
 }
 
 .window-cntr {

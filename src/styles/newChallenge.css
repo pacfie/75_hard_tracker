@@ -1,49 +1,23 @@
-:root {
-  --new-challenge-btn-bg-clr: var(--white);
-  --new-challenge-btn-font-clr: var(--red);
-  --start-btn-bg-clr: var(--yellow);
-  --start-btn-font-clr: var(--white);
-  --yes-btn-bg-clr: var(--red);
-  --yes-btn-font-clr: var(--white);
-  --no-btn-bg-clr: var(--white);
-  --no-btn-font-clr: var(--dark);
-
-  --error-clr: var(--red);
-}
-
 .new-challenge-btn {
   position: absolute;
   bottom: 1rem;
   left: 50%;
   transform: translate(-50%);
-  background-color: var(--new-challenge-btn-bg-clr);
-  color: var(--new-challenge-btn-font-clr);
-}
-
-.start-btn {
-  background-color: var(--start-btn-bg-clr);
-  color: var(--start-btn-font-clr);
-}
-
-.yes-btn {
-  background-color: var(--yes-btn-bg-clr);
-  color: var(--yes-btn-font-clr);
-}
-
-.no-btn {
-  background-color: var(--no-btn-bg-clr);
-  color: var(--no-btn-font-clr);
-}
-
-.yes-btn,
-.no-btn {
-  font-size: 0.8rem;
 }
 
 #new-challenge-form input {
   width: fit-content;
+  font-size: 1.25rem;
+  margin-inline: auto;
 }
 
 .validation-msg {
   color: var(--error-clr);
+  font-size: 0.9rem;
+}
+
+.info-text {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--secondary-text-clr);
 }
