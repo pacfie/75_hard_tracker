@@ -1,10 +1,10 @@
 :root {
   --close-btn-bg-clr: var(--clr-secondary-600);
+  --icon-cntr-width: min(4rem, 10dvw);
 }
 
 #rules-box {
-  --icon-cntr-width: 4rem;
-  padding: 2rem;
+  padding: min(2rem, 5dvw);
   border-radius: var(--border-radius);
   background-color: var(--background);  
   box-shadow: 3px 3px 15px 6px var(--box-shadow-clr);
@@ -18,7 +18,7 @@
 }
 
 #rules-box p {
-  font-size: 1.125rem;
+  font-size: clamp(0.8rem, calc(0.25rem + 3dvw), 1.125rem);
   font-style: italic;
   font-weight: 300;
   color: var(--secondary-text-clr);
@@ -34,25 +34,20 @@
   border-radius: 50%;
   background-color: var(--clr-accent);
   color: var(--white);
+  font-size: clamp(1rem, calc(0.5rem + 3dvw), 2rem);
 }
-
-#rules-box svg {
-  width: 2rem;
-  height: 2rem;
-}
-
 
 .rules-content button {
   position: absolute;
   top: -1rem;
   right: 0;
-  width: 4rem;
+  width: var(--icon-cntr-width);
   aspect-ratio: 1;
   border: 3px solid var(--background);
   border-radius: 50%;
   background-color: var(--close-btn-bg-clr);
   color: var(--white);
-  font-size: 1.5rem;
+  font-size: clamp(1rem, calc(0.5rem + 3dvw), 2rem);
   box-shadow: 12px -5px 15px -3px var(--box-shadow-clr);
 }
 

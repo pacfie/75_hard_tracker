@@ -80,7 +80,7 @@
   --menu-bg-clr: var(--clr-primary);
   --hero-btn-font-clr: var(--clr-secondary);
   --card-bg-clr: var(--white);
-  --highlight-shadow-clr: var(--clr-primary);
+  --highlight-shadow-clr: var(--clr-primary-200);
   --banner-bg-clr: var(--white);
   --grid-bg-clr: var(--clr-neutral-200);
   --completed-bg-clr: var(--clr-primary);
@@ -101,14 +101,14 @@ body.dark {
   --clr-secondary: var(--clr-secondary-900);
   --clr-accent: var(--clr-accent-800);
 
-  --box-shadow-clr: transparent;
+  --box-shadow-clr: var(--clr-neutral-1000);
   --secondary-text-clr: var(--clr-neutral-500);
 
   --menu-bg-clr: var(--clr-neutral-1000);
   --hero-btn-font-clr: var(--white);
   --card-bg-clr: var(--clr-neutral-800);
   --highlight-shadow-clr: var(--clr-primary-dark);
-  --banner-bg-clr: var(--clr-neutral-700);
+  --banner-bg-clr: var(--clr-neutral-800);
   --grid-bg-clr: var(--clr-neutral-800);
   --completed-bg-clr: var(--clr-primary-dark);
   --failed-bg-clr: var(--clr-secondary-900);
@@ -153,13 +153,13 @@ body {
   }
 
   body::before {
-    background:url('../images/pushup.png') no-repeat left bottom / 25%;
+    background:url('../images/pushup.png') no-repeat left bottom 10% / 25%;
     background-attachment: fixed;
     opacity: 0.2;
   }
 
   body::after {
-    background: url('../images/pullup.png') no-repeat right bottom 50% / 15rem;
+    background: url('../images/pullup.png') no-repeat right top 20% / 15rem;
     background-attachment: fixed;
     opacity: 0.1;
   }
@@ -189,6 +189,12 @@ body {
 
 h1,h2,h3,h4,h5,h6 {
   font-family: var(--font-head);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 /* BUTTONS */
@@ -242,11 +248,21 @@ body p {
   margin: 0;
 }
 
-body .form-control {
-  background: var(--background);
+body .form-control,
+body .form-check-input {
+  background-color: var(--background);
   color: var(--foreground);
 }
 
+body.dark .form-control,
+body.dark .form-check-input {
+  background-color: var(--clr-neutral-700);
+}
+
 body.dark .form-control {
-  background: var(--clr-neutral-700);
+  cursor: default;
+}
+
+body .form-control:focus {
+  color: var(--foreground);
 }

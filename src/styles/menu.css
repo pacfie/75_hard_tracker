@@ -52,6 +52,15 @@
   visibility: hidden;
 }
 
+.cntr-menu-items button.toggle-dark-mode {
+  color: var(--clr-accent-200);
+  margin-left: 0.5rem;
+}
+
+.cntr-menu-items button.toggle-dark-mode::before {
+  display: none;
+}
+
 /* PROGRESS BAR */
 .loading-cntr {
   display: flex;
@@ -68,19 +77,20 @@
   height: 2px;
   border-radius: 50%;
   color: var(--white);
-  box-shadow: 
-    calc(1*var(--d))      calc(0*var(--d))     0 0,
-    calc(0.707*var(--d))  calc(0.707*var(--d)) 0 0.25px,
-    calc(0*var(--d))      calc(1*var(--d))     0 0.5px,
-    calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 0.75px,
-    calc(-1*var(--d))     calc(0*var(--d))     0 1px,
-    calc(-0.707*var(--d)) calc(-0.707*var(--d))0 1.25px,
-    calc(0*var(--d))      calc(-1*var(--d))    0 1.5px;
+  box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
+    calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 0.25px,
+    calc(0 * var(--d)) calc(1 * var(--d)) 0 0.5px,
+    calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 0.75px,
+    calc(-1 * var(--d)) calc(0 * var(--d)) 0 1px,
+    calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 1.25px,
+    calc(0 * var(--d)) calc(-1 * var(--d)) 0 1.5px;
   animation: l27 1s infinite steps(8);
 }
 
 @keyframes l27 {
-  100% { transform: rotate(1turn); }
+  100% {
+    transform: rotate(1turn);
+  }
 }
 
 .cntr-progress-bar {

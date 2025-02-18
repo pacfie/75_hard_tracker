@@ -11,10 +11,10 @@ import "@/styles/dayList.css";
 import "@/styles/daily.css";
 import "@/styles/newChallenge.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import * as config from "@/app/utils/config";
 import { ChallengeProvider } from "./utils/contexts/ChallengeContext";
 import { RulesProvider } from "./utils/contexts/RulesContext";
 import Footer from "./components/Footer";
+import WholePage from "./components/WholePage";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,13 +35,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ChallengeProvider>
-          <RulesProvider>
-            <Menu />
-            <div className="p-5">{children}</div>
-          </RulesProvider>
-        </ChallengeProvider>
-        <Footer/>
+        <WholePage>
+          <ChallengeProvider>
+            <RulesProvider>
+              <Menu />
+              <div className="px-4 px-md-5 py-5">{children}</div>
+            </RulesProvider>
+          </ChallengeProvider>
+          <Footer />
+        </WholePage>
       </body>
     </html>
   );

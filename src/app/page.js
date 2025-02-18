@@ -3,6 +3,9 @@
 import Image from "next/image";
 import rockyPhoto from "@/images/rocky.png";
 import highlight1 from "@/images/screenshot1.png";
+import highlight2 from "@/images/screenshot2.png";
+import highlight3 from "@/images/screenshot3.png";
+// import highlight4 from "@/images/screenshot4.png";
 import { useRules } from "./utils/contexts/RulesContext";
 import { useRouter } from "next/navigation";
 import {
@@ -24,7 +27,7 @@ export default function Home() {
   };
 
   return (
-    <div id="dashboard" className="col-xxl-10 mx-auto">
+    <div id="dashboard" className="col-xl-10 col-xxl-8 mx-auto">
       <section className="hero">
         <div className="hero-content">
           <h2>75 hard</h2>
@@ -80,7 +83,7 @@ export default function Home() {
           icon={faSeedling}
         />
       </section>
-      <section className="highlights">
+      <section className="highlights my-3 my-md-5">
         <DashboardHighlight
           image={highlight1}
           alt={"Screenshot of the Rules window"}
@@ -90,31 +93,25 @@ export default function Home() {
           }
         />
         <DashboardHighlight
-          image={highlight1}
-          alt={"Screenshot of the Rules window"}
-          text={
-            "Adding screenshots of the challenge page with descriptive text is a great idea—it gives potential users a visual preview of how the app works and makes it feel more real."
-          }
-          order={2}
-        />
-        <DashboardHighlight
-          image={highlight1}
+          image={highlight2}          
+          title={"Customize challenge"}
           alt={"Screenshot of the Rules window"}
           text={
             "The 75 Hard Challenge is designed to build discipline and mental toughness over 75 days—but we know that everyone’s journey is different. Whether you commit to the full challenge or set a shorter goal, this app lets you customize your experience while still pushing yourself to grow. Choose the duration that works for you and stay consistent!"
           }
+          order={2}
         />
         <DashboardHighlight
-          image={highlight1}
+          image={highlight3}
           alt={"Screenshot of the Rules window"}
           title={"Responsive design"}
           text={
-            "No matter where you are, your habit tracker is ready for you. Whether you're checking in on a desktop, tablet, or phone, the app automatically adapts to fit your screen. No clunky layouts, no frustrating zooming—just a smooth and simple experience designed to work perfectly on any device. Stay consistent, whether you're at home, at the gym, or on the move!"
+            "Track your progress in style—whether you prefer a light, clean look or a sleek dark mode. Switch effortlessly between themes and stay focused on your challenge, day or night! No clunky layouts, no frustrating zooming—just a smooth and simple experience designed to work perfectly on any device."
           }
-          order={2}
+          
         />
       </section>
-      <section className="cta">
+      <section className="cta text-center py-2 py-md-5">
         <h1>
           Start building better habits today - your future self will be
           grateful!

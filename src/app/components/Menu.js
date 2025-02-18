@@ -4,16 +4,20 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useChallenge } from "../utils/contexts/ChallengeContext";
 import { useRules } from "../utils/contexts/RulesContext";
+import useDarkMode from "../utils/hooks/useDarkMode";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
 
 export function Menu() {
-  const [loading, setLoading] = useState(true);
+  const [loadingStorageData, setLoadingStorageData] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const { setShowRules } = useRules();
   const { challengeSize, tickedBoxes, setTickedBoxes } = useChallenge();
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   // set completed days
   useEffect(() => {
-    setLoading(true);
+    setLoadingStorageData(true);
     const storedData = localStorage.getItem("challengeData");
     if (storedData) {
       const challengeData = JSON.parse(storedData);
@@ -26,7 +30,7 @@ export function Menu() {
 
       setTickedBoxes(completedDays);
     }
-    setLoading(false);
+    setLoadingStorageData(false);
   }, [setTickedBoxes]);
 
   return (
@@ -45,7 +49,7 @@ export function Menu() {
           </Link>
         </div>
         <div className="cntr-progress-bar">
-          {loading ? (
+          {loadingStorageData ? (
             <div className="loading-cntr">
             <span className="fst-italic">Loading progress bar...</span>
             <p className="loader m-0"></p>
@@ -84,6 +88,16 @@ export function Menu() {
                 }}
               >
                 <span>Rules</span>
+              </button>
+            </li>
+            <li>
+              <button
+                title="Toggle dark mode"
+                onClick={toggleDarkMode}
+                className="toggle-dark-mode"
+              >
+                <span>
+                  {darkMode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}</span>
               </button>
             </li>
           </ul>

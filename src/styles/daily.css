@@ -11,6 +11,11 @@
   background: var(--daily-data-bg-clr);
 }
 
+#daily-data .form-label {
+  font-family: Outfit;
+  font-weight: 300;
+}
+
 #daily-data svg {
   width: 2rem;
   aspect-ratio: 1;
@@ -29,7 +34,7 @@
 
 .custom-checkbox .form-check-input {
   margin: 0;
-  border: 1px solid var(--dark);
+  border: 1px solid var(--foreground);
   cursor: pointer;
 }
 
@@ -44,12 +49,12 @@
 }
 
 .custom-checkbox .form-check-input:focus {
-  border-color: var(--dark);
+  border-color: var(--foreground);
   box-shadow: none;
 }
 
 .custom-checkbox:not(.selected-checkbox):has(.form-check-input:focus-visible){
-  background-color: var(--clr-secondary-100);
+  background-color: var(--clr-accent);
 }
 
 /* PLACEHOLDER */

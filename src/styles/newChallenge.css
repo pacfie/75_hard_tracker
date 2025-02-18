@@ -1,3 +1,8 @@
+#new-challenge-form {
+  font-family: Outfit;
+  font-size: 1.25rem;
+}
+
 .new-challenge-btn {
   position: absolute;
   bottom: 1rem;
@@ -17,6 +22,7 @@
 }
 
 .info-text {
+  margin-top: 0.25rem;
   font-size: 0.8rem;
   font-style: italic;
   color: var(--secondary-text-clr);

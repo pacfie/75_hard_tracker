@@ -24,9 +24,11 @@ export default function Challenge() {
   const challengeSizeRef = useRef();
   const startingDateRef = useRef();
   const [validationErrors, setValidationErrors] = useState({});
+  const [loadingStorageData, setLoadingStorageData] = useState(true);
 
   // (re-)initialize days
   useEffect(() => {
+    setLoadingStorageData(true);
     const initializeDays = () => {
       if (typeof window === "undefined")
         return DayUtil.initializeDays(challengeSize);
@@ -43,6 +45,7 @@ export default function Challenge() {
 
     const initialDays = initializeDays();
     setDays(initialDays);
+    setLoadingStorageData(false);
   }, [challengeSize, startingDate]);
 
   // set completed days
@@ -50,7 +53,6 @@ export default function Challenge() {
     const storedData = localStorage.getItem("challengeData");
     if (storedData) {
       const challengeData = JSON.parse(storedData);
-      console.log(challengeData);
       const completedDays = challengeData
         .filter((day) =>
           Object.values(day.checkboxes).every((value) => value === true)
@@ -146,6 +148,10 @@ export default function Challenge() {
       );
     }
     return <DayPlaceholder />;
+  }
+
+  if(loadingStorageData){
+    return <></>
   }
 
   return (

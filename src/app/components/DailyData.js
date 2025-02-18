@@ -58,8 +58,6 @@ export default function DailyData({ day, onTickedBoxesChange }) {
       const storedData = localStorage.getItem("challengeData") || "[]";
       let challengeData = JSON.parse(storedData);
 
-      console.log(challengeData);
-
       challengeData[dayData.number - 1] = dayData;
 
       localStorage.setItem("challengeData", JSON.stringify(challengeData));

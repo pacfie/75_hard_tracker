@@ -5,7 +5,7 @@ export default function Rules() {
   return (
     <div id="rules-box" className="">
       <h1 className="text-center">Rules</h1>
-      <div className="d-grid gap-4 mt-5">
+      <div className="d-grid gap-4 mt-3 mt-md-5">
         <Rule
           ruleHeader={"Follow a diet"}
           ruleText={

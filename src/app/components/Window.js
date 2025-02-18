@@ -5,7 +5,7 @@ export default function Window({title, content, footer, onClose}){
  return (
     <div className="window">
       <div className="window-header">
-        <span>{title}</span>
+        <h4 className="m-0">{title}</h4>
         <button type="button" title="Close" onClick={onClose} style={{color: "var(--foreground)"}}>
           <FontAwesomeIcon icon={faXmark} />
         </button>
