@@ -57,6 +57,11 @@
   margin-left: 0.5rem;
 }
 
+.cntr-menu-items button.toggle-dark-mode:focus,
+.cntr-menu-items button.toggle-dark-mode:hover {
+  color: var(--clr-accent-600);
+}
+
 .cntr-menu-items button.toggle-dark-mode::before {
   display: none;
 }
@@ -138,6 +143,10 @@ progress::-webkit-progress-bar {
     right: 0;
     z-index: 1000;
     transition: all 0.25s ease-in-out;
+  }
+
+  .cntr-menu-items button.toggle-dark-mode {
+    margin: 0;
   }
 
   .menu-toggle {

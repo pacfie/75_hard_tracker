@@ -2,12 +2,14 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Banner from "@/app/components/Banner";
-import CheckboxGrid from "@/app/components/CheckboxGrid";
+import CheckboxGrid from "@/app/components/DayListGrid";
 import DailyData from "@/app/components/DailyData";
 import * as DayUtil from "@/app/utils/DayUtil";
 import DayPlaceholder from "@/app/components/DayPlaceholder";
 import { useChallenge } from "@/app/utils/contexts/ChallengeContext";
 import WindowContainer from "@/app/components/WindowContainer";
+import Image from "next/image";
+import rockyPhoto from "@/images/rocky.png";
 
 export default function Challenge() {
   const [selectedDay, setSelectedDay] = useState(null);
@@ -16,11 +18,13 @@ export default function Challenge() {
     setStartingDate,
     challengeSize,
     setChallengeSize,
+    tickedBoxes,
     setTickedBoxes,
   } = useChallenge();
   const [days, setDays] = useState([]);
   const [newChallenge, setNewChallenge] = useState(false);
   const [newChallengeForm, setNewChallengeForm] = useState(false);
+  const [finishedChallenge, setFinishedChallenge] = useState(false);
   const challengeSizeRef = useRef();
   const startingDateRef = useRef();
   const [validationErrors, setValidationErrors] = useState({});
@@ -62,6 +66,12 @@ export default function Challenge() {
       setTickedBoxes(completedDays);
     }
   }, [setTickedBoxes]);
+
+  useEffect(() => {
+    if (tickedBoxes.length == challengeSize) {
+      setFinishedChallenge(true);
+    }
+  }, [tickedBoxes, challengeSize]);
 
   // day selection
   function handleDaySelection(dayNumber) {
@@ -150,8 +160,8 @@ export default function Challenge() {
     return <DayPlaceholder />;
   }
 
-  if(loadingStorageData){
-    return <></>
+  if (loadingStorageData) {
+    return <></>;
   }
 
   return (
@@ -214,9 +224,7 @@ export default function Challenge() {
           title={"Start new challenge"}
           content={
             <form id="new-challenge-form" onSubmit={startNewChallenge}>
-              <div
-                className="d-grid gap-5 mb-3 text-center"
-              >
+              <div className="d-grid mb-3 text-center" style={{gap: "clamp(1.5rem, calc(0.5rem + 3dvw), 3rem)"}}>
                 <div>
                   <label className="form-label" htmlFor="challenge-size">
                     Challenge length
@@ -267,6 +275,25 @@ export default function Challenge() {
           }
           setShowWindow={setNewChallengeForm}
           onClose={() => setValidationErrors({})}
+        />
+      )}
+      {finishedChallenge && (
+        <WindowContainer
+          title={"You rock!"}
+          content={
+            <div className="row align-items-center">
+              <p className="col-md-6" style={{textAlign: "justify"}}>{`Congratulations! 🎉 You’ve conquered the challenge and proven your discipline, resilience, and commitment. Take a moment to celebrate your achievement, reflect on how far you’ve come, and set your sights on what’s next. This is just the beginning!`}</p>
+              <div className="col-md-5 ms-5">
+                <Image
+                  src={rockyPhoto}
+                  alt={"Photo of Rocky Balboa raising his fist in the sky"}
+                  width={0}
+                  height={0}
+                />
+              </div>
+            </div>
+          }
+          setShowWindow={setFinishedChallenge}
         />
       )}
     </div>

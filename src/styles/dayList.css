@@ -41,6 +41,11 @@
   color: var(--white);
 }
 
+.day-block.today {
+  background-color: var(--today-bg-clr);
+  color: var(--clr-neutral-1000);
+}
+
 .day-block.selected-day,.day-block:not(.selected-day):focus {
   background-color: var(--selected-day-bg-clr);
   color: var(--white);

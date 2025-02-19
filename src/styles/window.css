@@ -11,10 +11,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1.5rem;
   padding-block: 1rem;
   padding-inline: 1.5rem;
   border-bottom: 1px solid var(--clr-neutral-700);
-  font-size: 1.25rem;
+  font-size: clamp(1rem, calc(0.5rem + 2dvw), 1.25rem);
 }
 
 .window-header button {
@@ -24,7 +25,7 @@
 
 .window-body {
   padding-block: 1rem;
-  padding-inline: 1.5rem;
+  padding-inline: min(2dvw, 1.5rem);
 }
 
 .window-footer {

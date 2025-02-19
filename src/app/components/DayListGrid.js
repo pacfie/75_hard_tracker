@@ -35,6 +35,14 @@ export default function CheckboxGrid({
       : "";
   }
 
+
+  function isToday(dayNumber) {
+    return DayUtil.isToday(DayUtil.addDays(startingDate, dayNumber))
+      ? "today"
+      : "";
+  }
+
+
   return (
     <div id="day-list-grid">
       {[...Array(challengeSize).keys()].map((key, index) => (
@@ -42,7 +50,7 @@ export default function CheckboxGrid({
           key={key}
           number={index + 1}
           onDayClick={handleDaySelection}
-          classes={`${isSelected(index + 1)} ${dayStates[index] || ""}`}
+          classes={`${isSelected(index + 1)} ${dayStates[index] || ""} ${isToday(index + 1)}`}
           completed={dayStates[index] == "completed"}
           isOpen={DayUtil.isBeforeToday(DayUtil.addDays(startingDate, index))}
         />

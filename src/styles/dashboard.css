@@ -30,7 +30,8 @@
 }
 
 .hero button {
-  width: min(15rem, 100%);
+  /* width: min(15rem, 100%); */
+  font-size: clamp(0.8rem, calc(0.5rem + 1dvw), 1rem);
 }
 
 .hero img {
@@ -46,8 +47,8 @@
   text-align: center;
   font-size: clamp(1rem, calc(0.5rem + 3dvw), 1.5rem);
   font-style: italic;
-  padding-block: 3rem;
-  margin-block: clamp(1rem, calc(1rem + 3dvw), 4rem);
+  padding-block: clamp(0.5rem, calc(0.25rem + 2dvw), 3rem);
+  margin-block: clamp(0.25rem, calc(0.25rem + 2dvw), 3rem);
 }
 
 .fade-in {
@@ -89,7 +90,7 @@ blockquote::after {
 
 .howTo .card {
   min-width: 20rem;
-  padding: 2rem;
+  padding: min(2rem, 6dvw);
   border: none;
   background-color: var(--card-bg-clr);
   box-shadow: var(--box-shadow);
@@ -101,7 +102,7 @@ blockquote::after {
 .howTo svg {
   margin-inline: auto;
   margin-bottom: 1rem;
-  font-size: 2rem;
+  font-size: clamp(1.25rem, calc(1rem + 3dvw), 2rem);
   color: var(--clr-primary);
 }
 
@@ -158,7 +159,7 @@ blockquote::after {
     grid-template-columns: 1fr;
   }
 
-  .hero img {
+  .hero-img {
     display: none;
   }
 
@@ -168,11 +169,17 @@ blockquote::after {
 
   .highlight img {
     order: 0 !important;
+    box-shadow: 15px 15px 0px 0px var(--highlight-shadow-clr);
+  }
+
+  blockquote::before,
+  blockquote::after {
+    display: none;
   }
 }
 
 @media (max-width: 500px) {
   .howTo .card {
-    width: 100%;
+    min-width: 100%;
   }
 }

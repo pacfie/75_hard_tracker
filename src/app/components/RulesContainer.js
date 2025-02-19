@@ -36,7 +36,7 @@ export default function RulesContainer({ setShowRules }) {
       onClick={closeRulesWindow}
     >
       <div
-        className="window-content rules-content position-relative px-4 col-md-10 col-lg-8 col-xl-8 col-xxl-6 mx-auto"
+        className="window-content rules-content position-relative px-4 col-sm-12 col-md-10 col-lg-8 col-xl-8 col-xxl-6 mx-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <Rules />

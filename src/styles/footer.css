@@ -2,7 +2,7 @@ footer {
   position: absolute;
   top: 100%;
   width: 100%;
-  padding: 3rem;
+  padding: min(3rem, 6dvw);
   background-color: var(--footer-bg-clr);
   color: var(--footer-font-clr);
   text-align: center;
@@ -15,6 +15,6 @@ footer ul {
   flex-wrap: wrap;
   width: fit-content;
   margin-inline: auto;
-  font-size: 1.5rem;
+  font-size: clamp(0.8rem, calc(0.5rem + 4dvw), 1.5rem);
   list-style: none;
 }

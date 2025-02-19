@@ -26,7 +26,7 @@ export default function QuoteCarousel() {
 
   return (
     <div className="quote-carousel">
-      <blockquote className={`quote ${fade ? "fade-in" : "fade-out"} mx-auto my-0 position-relative`} style={{width: "fit-content"}}>
+      <blockquote className={`quote ${fade ? "fade-in" : "fade-out"} mx-auto my-0 position-relative`} style={{width: "fit-content", height: "4rem"}}>
         {quotes[index]}
       </blockquote>
     </div>

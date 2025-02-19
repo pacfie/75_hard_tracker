@@ -85,6 +85,7 @@
   --grid-bg-clr: var(--clr-neutral-200);
   --completed-bg-clr: var(--clr-primary);
   --failed-bg-clr: var(--clr-secondary-300);
+  --today-bg-clr: var(--clr-neutral-500);
   --selected-day-bg-clr: var(--clr-accent);
   --daily-data-bg-clr: var(--white);
 
@@ -101,7 +102,7 @@ body.dark {
   --clr-secondary: var(--clr-secondary-900);
   --clr-accent: var(--clr-accent-800);
 
-  --box-shadow-clr: var(--clr-neutral-1000);
+  --box-shadow-clr: black;
   --secondary-text-clr: var(--clr-neutral-500);
 
   --menu-bg-clr: var(--clr-neutral-1000);
@@ -112,6 +113,7 @@ body.dark {
   --grid-bg-clr: var(--clr-neutral-800);
   --completed-bg-clr: var(--clr-primary-dark);
   --failed-bg-clr: var(--clr-secondary-900);
+  --today-bg-clr: var(--clr-neutral-500);
   --selected-day-bg-clr: var(--clr-accent);
   --daily-data-bg-clr: var(--clr-neutral-800);
 
@@ -129,7 +131,7 @@ body.dark {
 
 html,
 body {
-  max-width: 100vw;
+  max-width: 100dvw;
   /* overflow-x: hidden; */
 }
 
