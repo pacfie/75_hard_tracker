@@ -31,6 +31,11 @@
   box-shadow: 2px 2px 2px 1px var(--box-shadow-clr);
 }
 
+.day-block.today {
+  background-color: var(--today-bg-clr);
+  color: var(--clr-neutral-1000);
+}
+
 .day-block.completed {
   background-color: var(--completed-bg-clr);
   color: var(--white);
@@ -39,11 +44,6 @@
 .day-block.failed {
   background-color: var(--failed-bg-clr);
   color: var(--white);
-}
-
-.day-block.today {
-  background-color: var(--today-bg-clr);
-  color: var(--clr-neutral-1000);
 }
 
 .day-block.selected-day,.day-block:not(.selected-day):focus {

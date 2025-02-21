@@ -22,6 +22,7 @@ export default function CheckboxGrid({
           : "";
       })
     );
+    setSelectedDayNumber(0);
   }, [startingDate, challengeSize, tickedBoxes]);
 
   function handleDaySelection(day) {
