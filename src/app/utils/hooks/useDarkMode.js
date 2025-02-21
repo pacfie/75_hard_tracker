@@ -9,7 +9,14 @@ export default function useDarkMode() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedDarkMode = localStorage.getItem("theme") === "dark";
-      setDarkMode(storedDarkMode);
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      if (storedDarkMode == false && prefersDark == true) {
+        setDarkMode(true);
+      } else {
+        setDarkMode(storedDarkMode);
+      }
       setIsLoading(false);
     }
   }, []);

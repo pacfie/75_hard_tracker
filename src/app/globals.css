@@ -121,18 +121,9 @@ body.dark {
   --footer-font-clr: var(--clr-neutral-500);
 }
 
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 html,
 body {
   max-width: 100dvw;
-  /* overflow-x: hidden; */
 }
 
 body {
