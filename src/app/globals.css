@@ -212,7 +212,7 @@ img {
 }
 
 .ellipse-btn.inverted-btn{
-  background-color: transparent;
+  background-color: var(--background);
   color: var(--hero-btn-font-clr);
 }
 
