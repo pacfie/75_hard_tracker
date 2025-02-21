@@ -4,6 +4,8 @@
 }
 
 #rules-box {
+  max-height: 80dvh;
+  overflow: auto;
   padding: min(2rem, 5dvw);
   border-radius: var(--border-radius);
   background-color: var(--background);  
