@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 75 Hard Tracker App Documentation
 
-First, run the development server:
+## Overview
+This is a simple application built to help users track their daily habits. The primary goal of developing this app was to learn React from scratch while implementing core frontend development concepts.
 
-```bash
+### Features
+- Track daily habit progress
+- Store data using local storage
+- View progress over time
+- Minimalist and user-friendly UI
+
+## Installation & Setup
+
+### Prerequisites
+Ensure you have the following installed:
+- [Node.js](https://nodejs.org/en)
+- [Git](https://git-scm.com/)
+
+### Steps to Run the App
+1. Clone the repository:
+```
+git clone https://github.com/pacfie/75_hard_tracker
+```
+2. Navigate to the project folder:
+```
+cd 75_hard_tracker
+```
+3. Install dependencies:
+```
+npm install
+```
+4. Start the development server:
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+5. Open the app in your browser:
+```
+http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage Guide
+- Customize the challenge by selecting the starting date and length.
+- Mark habits as completed each day.
+- Provide additional info of your diet, workouts and book. (optional)
+- View progress updates on the navbar.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Technical Details
+### Tech Stack
+- Frontend: React (with hooks and state management)
+- Routing: Next.js (App router)
+- Storage: Local Storage
+- Styling: Material Design principles
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Folder Structure
+```
+75_hard_tracker/
+│── src/app/
+│   │── components/    # Reusable UI components
+│   │── pages/         # Main pages of the app
+│   │── utils/         # Helper functions, custom hooks
+│   │── globals.css    # Main styling
+│   │── page.js        # Main app component
+│   │── layout.js      # Entry point
+│── public/
+│── package.json
+│── next.config.js    # Next.js configuration
+```
 
-## Learn More
+### Challenges & Learning Experience
+- Implementing local storage for persistence
+- Managing state effectively using React hooks
+- Understanding Next.js routing
+- Designing a clean, simple and responsive UI
 
-To learn more about Next.js, take a look at the following resources:
+### Future Improvements
+- Add authentication for user accounts
+- Sync data with a backend database
+- Introduce _Feeling_ field and statistics
+- Possibility to upload progress photo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Conclusion
+This habit tracker app served as a practical project to gain hands-on experience with React (and Next.js). Future iterations will improve functionality and expand features to enhance user engagement.
